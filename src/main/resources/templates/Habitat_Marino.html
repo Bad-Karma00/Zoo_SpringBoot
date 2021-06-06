@@ -1,0 +1,248 @@
+<style id="jsbin-css">
+body{
+	  margin:0px;
+	  text-align:center;
+	  font-family: 'Oswald', sans-serif;
+	  font-size: 18px;
+	}
+
+.navigation-bar{
+  display: flex;
+  justify-content: left;
+  align-items: center;
+  margin: 50px auto;
+  list-style: none;
+  position: fixed;
+  top:0px;
+}
+
+.navigation-bar li {
+  width: 105px;
+  height: 50px;
+  text-align: center;
+}
+.navigation-bar li a {
+  color: yellow;
+  text-decoration: none;
+  text-transform: uppercase;
+}
+
+.navigation-bar li:hover a {
+  color: #d94f5c;
+}
+
+.navigation-bar li:not(:last-child) {
+  margin-right: 30px;
+}
+
+li.dropdown {
+    display: inline-block;
+}
+
+li.dropdown1 {
+    display: inline-block;
+}
+
+.dropdown-content, .dropdown-content1 {
+    display: none;
+    position: absolute;
+    background-color: #f9f9f9;
+    min-width: 105px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+}
+
+.dropdown-content a, .dropdown-content1 a{
+    color: black;
+    padding: 12px 15px;
+    text-decoration: none;
+    display: block;
+    text-align: center;
+}
+
+.dropdown-content a:hover {background-color: #f1f1f1}
+
+
+.dropdown-content1 a:hover {background-color: #f1f1f1}
+
+.dropdown:hover .dropdown-content {
+    display: block;
+}
+.dropdown1:hover .dropdown-content1 {
+    display: block;
+}
+
+
+
+.banner{
+	
+	color:white;
+}
+
+.pag1 {
+	background-image:url("https://best5.it/b5/wp-content/uploads/2016/07/Lincredibile-viaggio-della-tartaruga-marina2-800x400-800x400.jpg");
+	background-position: center;
+    background-attachment: fixed;
+	background-repeat: no-repeat;
+    background-size: cover;
+	color:white;
+}
+
+.pag1 img{
+	display: block;
+	margin-left: 100px;
+	margin-right: auto;
+	width: 20%;
+}
+#logo{
+	display: block;
+	margin-left:auto;
+	margin-right:100px;
+	width: 9%;
+}
+
+
+.parallax {
+  background-image: url("https://static.ohga.it/wp-content/uploads/sites/24/2020/03/barriera-corallina.jpg");
+
+  min-height: 400px; 
+
+  background-attachment: fixed;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.spacer {
+	font-size: 0; 
+    height: 300px;
+    line-height: 0;
+}
+
+.spacer2 {
+	font-size: 0; 
+    height: 100px;
+    line-height: 0;
+}
+
+.ImgR{
+	display:flex;
+	flex-wrap: wrap;
+	justify-content: center;
+}
+
+.ImgC{
+	max-width: 50%;
+	flex:50%;
+    margin-left:8px;
+}
+
+.ImgC img {
+  margin-top: 8px;
+  width: 100%;
+  object-fit:cover;
+}
+
+.overlay{
+  bottom:0;
+  background: rgb(0, 0, 0);
+  background: rgba(0, 0, 0, 0.8); /* Black see-through */
+  color: #f1f1f1;
+  transition: .5s ease;
+  opacity:0;
+  color: white;
+  font-size: 20px;
+  padding: 20px;
+  text-align: center;
+}
+
+.overlay a{
+	color:white;
+}
+
+.Img1:hover .overlay{
+  opacity:1;
+}
+
+.Img2:hover .overlay{
+  opacity:1;
+}
+
+.Img3:hover .overlay{
+  opacity:1;
+}
+
+p{
+	font-size:25px;
+}
+</style>
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width">
+  <title>Marino</title>
+</head>
+<body>
+  <div class="pag1">
+	<div class="banner">
+	<img src="https://image.freepik.com/free-vector/monkey-logo-design-vector-illustration_104950-126.jpg" id="logo">
+	  <ul class="navigation-bar">
+		<li><a href="Sito_Zoo_Home.html">Home</a></li>
+		<li><a href="Informazioni.html">Info</a></li>
+		<li><a href="Prenota.html">Prenota</a></li>
+		<li class="dropdown1">
+			<a href="Habitat_Generale.html" class="dropbtn1">Habitat</a>
+				<div class="dropdown-content1">
+				<a href="Habitat_Marino.html">Marino</a>
+				<a href="Habitat_Savana.html">Savana</a>
+				<a href="Habitat_Foresta.html">Foresta</a>
+				</div>
+		</li>		
+	  </ul>
+	  </div>
+	  <br>
+	  <br>
+	  <br>
+	
+		<h1>HABITAT MARINO</h1>
+		<p>Ascolta il richiamo
+      <br>
+      <br>
+      Responsabile:Mario Mastrangeli</p>
+		
+	<div class="spacer"></div>
+</div>
+<div class="middle">
+		<h1>Habitat Marino</h1>
+		<p>Visitali tutti!!</p>
+</div>
+<div class="spacer2"></div>
+<div class="parallax">
+  <div class="ImgR">
+		<div class="ImgC">
+			<div class="Img1"><img src ="https://www.greenme.it/wp-content/uploads/2012/08/squalo_estinzione.jpg">
+			<div class="overlay">
+			<a href="Area_Squali.html">Area Squali</a>
+			</div> 
+			</div>
+		</div>
+		<div class="ImgC">
+			<div class="Img2"><img src ="https://www.viridea.it/wp-content/uploads/2019/06/consiglio-pesce-pagliaccio.jpg">
+			<div class="overlay">
+			<a href="Area_PesciTropicali.html">Area Pesci Tropicali</a>
+			</div>
+			</div>
+		</div>
+		<div class="ImgC">
+			<div class="Img3"><img src ="https://upload.wikimedia.org/wikipedia/commons/0/07/Emperor_Penguin_Manchot_empereur.jpg">
+			<div class="overlay">
+			<a href="Area_Pinguini.html">Area Pinguini</a>
+			</div> 
+			</div>
+		</div>
+	</div>
+ </div>
+  
+   <div class="parallax"></div>
+</body>
+</html>
