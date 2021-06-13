@@ -1,10 +1,3 @@
-<meta name="robots" content="noindex">
-<html>
-<head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width">
-  <title>Informazioni</title>
-<style id="jsbin-css">
 body{
 	  margin:0px;
 	  text-align:center;
@@ -85,7 +78,7 @@ li.dropdown1 {
 }
 
 .pag1 {
-	background-image:url("https://chapmanbrowns.files.wordpress.com/2015/04/scratching-head-monkey.jpg");
+	background-image:url("https://i.pinimg.com/originals/e3/f2/b1/e3f2b12d8dae478ca6450c1beb2375e1.jpg");
 	background-attachment: fixed;
 	background-position: center;
 	background-repeat: no-repeat;
@@ -99,11 +92,6 @@ li.dropdown1 {
 	margin-right: auto;
 	width: 20%;
 }
-
-.pag2{
-	background-image:url("https://images.photowall.com/products/62137/zoo-animals.jpg?h=699&q=85");
-}
-
 #logo{
 	display: block;
 	margin-left:auto;
@@ -136,10 +124,6 @@ li.dropdown1 {
 }
 
 
-.infocontainer{
-
-}
-
 .InformazioniC2{
   flex: 35%; /*Cambia quanta % l'oggetto si prende all'interno della flexbox*/
   max-width: 100%;
@@ -150,7 +134,7 @@ li.dropdown1 {
 	display:flex;
 	justify-content: left;
 	flex-wrap: wrap;
-	background-color:white;
+	background-color:cyan;
 }
 
 .InformazioniC1{
@@ -163,54 +147,54 @@ li.dropdown1 {
   object-fit:cover;
 }
 
+.InformazioniC2-2{
+  flex: 35%; /*Cambia quanta % l'oggetto si prende all'interno della flexbox*/
+  max-width: 100%;
+  padding: 0 10px;
+}
 
-</style>
-</head>
-<body>
-<div class="pag1">
-	<div class="banner">
-	<img src="https://image.freepik.com/free-vector/monkey-logo-design-vector-illustration_104950-126.jpg" id="logo">
-	  <ul class="navigation-bar">
-		<li><a href="Sito_Zoo_Home.html">Home</a></li>
-		<li><a href="Informazioni.html">Info</a></li>
-		<li><a href="Prenota.html">Prenota</a></li>
-		<li class="dropdown1">
-			<a href="Habitat_Generale.html" class="dropbtn1">Habitat</a>
-				<div class="dropdown-content1">
-				<a href="Habitat_Marino.html">Marino</a>
-				<a href="Habitat_Savana.html">Savana</a>
-				<a href="Habitat_Foresta.html">Foresta</a>
-				</div>
-		</li>		
-	  </ul>
-	  </div>
-	  <br>
-	  <br>
-	  <br>
-	
-		<h1>Informazioni</h1>
-		<p>Scopri dove e come trovarci!</p>
-		
-	<div class="spacer"></div>
-</div>
+.InformazioniR2{
+	display:flex;
+	justify-content: right;
+	flex-wrap: wrap;
+	background-color:pink;
+}
 
-<div class="pag2">
-	<div class="InformazioniR">
-		<div class="InformazioniC1">
-			<img src="https://i.imgur.com/fNsoI3t.png">
-		</div>
+.InformazioniC1-2{
+  flex: 15%; /*Cambia quanta % l'oggetto si prende all'interno della flexbox*/
+  max-width: 50%;
+}
+
+.InformazioniC1-2 img {
+  width: 100%;
+  object-fit:cover;
   
-  <div class="InformazioniC2">
-	<div class="InfoContainer">
-			<h3>Robbe</h3>
-			<p class ="Testo">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum</p>
-			</div>
-		</div>
-	</div>
-</div>
-	  
-</body>
-</html>
+}
 
+.InformazioniC2-3{
+  flex: 35%; /*Cambia quanta % l'oggetto si prende all'interno della flexbox*/
+  max-width: 100%;
+  padding: 0 10px;
+}
 
+.InformazioniR3{
+	display:flex;
+	justify-content: right;
+	flex-wrap: wrap;
+	background-color:green;
+}
 
+.InformazioniC1-3{
+  flex: 15%; /*Cambia quanta % l'oggetto si prende all'interno della flexbox*/
+  max-width: 50%;
+}
+
+.InformazioniC1-3 img {
+  width: 100%;
+  object-fit:cover;
+  
+}
+
+a {
+	color: black;
+}

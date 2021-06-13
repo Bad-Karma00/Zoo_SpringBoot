@@ -1,10 +1,3 @@
-<meta name="robots" content="noindex">
-<html>
-<head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width">
-  <title>Prenota</title>
-<style id="jsbin-css">
 body{
 	  margin:0px;
 	  text-align:center;
@@ -138,10 +131,6 @@ li.dropdown1 {
 }
 
 
-.infocontainer{
-
-}
-
 .InformazioniC2{
   flex: 35%; /*Cambia quanta % l'oggetto si prende all'interno della flexbox*/
   max-width: 100%;
@@ -164,56 +153,3 @@ li.dropdown1 {
   width: 100%;
   object-fit:cover;
 }
-
-</style>
-</head>
-<body>
-<div class="pag1">
-	<div class="banner">
-	<img src="https://image.freepik.com/free-vector/monkey-logo-design-vector-illustration_104950-126.jpg" id="logo">
-	  <ul class="navigation-bar">
-		<li><a href="Sito_Zoo_Home.html">Home</a></li>
-		<li><a href="Informazioni.html">Info</a></li>
-		<li><a href="Prenota.html">Prenota</a></li>
-		<li class="dropdown1">
-			<a href="Habitat_Generale.html" class="dropbtn1">Habitat</a>
-				<div class="dropdown-content1">
-				<a href="Habitat_Marino.html">Marino</a>
-				<a href="Habitat_Savana.html">Savana</a>
-				<a href="Habitat_Foresta.html">Foresta</a>
-				</div>
-		</li>		
-	  </ul>
-	  </div>
-	  <br>
-	  <br>
-	  <br>
-	
-		<h1>Prenota</h1>
-		<p>Compra il tuo biglietto online e risparmia!</p>
-		
-	<div class="spacer"></div>
-</div>
-
-<div class="pag2">
-	<div class="InformazioniR">
-  
-  <div class="InformazioniC2">
-	<div class="InfoContainer">
-			<h2>Prezzo di un biglietto: 5€</h2>
-			<form action="controller" method="post">
-				<div>Nome: <input type="text" name="nome" value=""/></div>
-				<div>Cognome: <input type="text" name="cognome" value=""/></div>
-				<div><input type="submit" name="submit" value="Prenota" /></div>
-			</form>
-			</div>
-		</div>
-	</div>
-	<div class="spacer"></div>
-</div>
-	  
-</body>
-</html>
-
-
-
