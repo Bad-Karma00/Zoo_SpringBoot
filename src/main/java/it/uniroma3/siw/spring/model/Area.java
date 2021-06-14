@@ -9,11 +9,11 @@ import javax.persistence.*;
 
 @Entity
 @Table(uniqueConstraints=@UniqueConstraint(columnNames={"nome"}))
- public class Area {
+ public class Area implements Comparable<Area> {
 	
 	@Id
 	@GeneratedValue (strategy = GenerationType.IDENTITY)
-	private Long Id;
+	private Long id;
 	
 	@Column (nullable = false)
 	private String nome;
@@ -24,8 +24,11 @@ import javax.persistence.*;
 	@Column (nullable = false)
 	private LocalDateTime orario;
 	
+	@Column(nullable = true, length = 64)
+    private String immagine;
+	
 	@ManyToOne
-	private Habitat areaHabitat;
+	private Habitat habitat;
 	
 	@OneToMany (mappedBy = "areaAnimale", cascade= {CascadeType.PERSIST})
 	private List<Animale> animali;
@@ -35,11 +38,11 @@ import javax.persistence.*;
 	}
 
 	public Long getId() {
-		return Id;
+		return id;
 	}
 
 	public void setId(Long id) {
-		Id = id;
+		this.id = id;
 	}
 
 	public String getNome() {
@@ -66,12 +69,12 @@ import javax.persistence.*;
 		this.orario = orario;
 	}
 
-	public Habitat getAreaHabitat() {
-		return areaHabitat;
+	public Habitat getHabitat() {
+		return habitat;
 	}
 
-	public void setAreaHabitat(Habitat areaHabitat) {
-		this.areaHabitat = areaHabitat;
+	public void setHabitat(Habitat habitat) {
+		this.habitat = habitat;
 	}
 
 	public List<Animale> getAnimali() {
@@ -82,6 +85,20 @@ import javax.persistence.*;
 		this.animali = animali;
 	}
 	
+	 @Transient
+	    public String getPhotosImagePath() {
+	        if (immagine == null || id == null) return null;
+	         
+	        return "/photos/" + id + nome + "/" + immagine;
+	    }
+
+	public int compareTo(Area area){
+		int result;
+		result = this.getNome().compareTo(area.getNome());
+		if (result == 0)
+			result = this.getHabitat().compareTo(area.getHabitat());
+		return result;
+	}
 
 
 }

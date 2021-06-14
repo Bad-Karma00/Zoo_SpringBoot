@@ -9,11 +9,11 @@ import javax.persistence.*;
 
 @Entity
 @Table(uniqueConstraints=@UniqueConstraint(columnNames={"nome"}))
- public class Habitat {
+ public class Habitat implements Comparable<Habitat> {
 	
 	@Id
 	@GeneratedValue (strategy = GenerationType.IDENTITY)
-	private Long Id;
+	private Long id;
 	
 	@Column (nullable = false)
 	private Long dimensione;
@@ -30,7 +30,7 @@ import javax.persistence.*;
 	@ManyToOne(cascade= {CascadeType.PERSIST})
 	private Responsabile responsabile;
 	
-	@OneToMany (mappedBy = "areaHabitat", cascade= {CascadeType.PERSIST})
+	@OneToMany (mappedBy = "habitat", cascade= {CascadeType.PERSIST})
 	private List<Area> aree;
 	
 	public Habitat() {
@@ -38,11 +38,11 @@ import javax.persistence.*;
 	}
 
 	public Long getId() {
-		return Id;
+		return id;
 	}
 
 	public void setId(Long id) {
-		Id = id;
+		this.id = id;
 	}
 
 	public Long getDimensione() {
@@ -91,6 +91,21 @@ import javax.persistence.*;
 
 	public void setAree(List<Area> aree) {
 		this.aree = aree;
+	}
+	
+	 @Transient
+	    public String getPhotosImagePath() {
+	        if (immagine == null || id == null) return null;
+	         
+	        return "/photos/" + id + nome + "/" + immagine;
+	    }
+	
+	public int compareTo(Habitat habitat){
+		int result;
+		result = this.getNome().compareTo(habitat.getNome());
+		if (result == 0)
+			result = this.getResponsabile().compareTo(habitat.getResponsabile());
+		return result;
 	}
 
 	

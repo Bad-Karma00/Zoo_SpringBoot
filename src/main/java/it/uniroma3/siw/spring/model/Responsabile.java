@@ -9,7 +9,7 @@ import javax.persistence.*;
 
 @Entity
 @Table(uniqueConstraints=@UniqueConstraint(columnNames={"nome"}))
- public class Responsabile {
+ public class Responsabile implements Comprable<Responsabile> {
 	
 	@Id
 	@GeneratedValue (strategy = GenerationType.IDENTITY)
@@ -93,6 +93,14 @@ import javax.persistence.*;
 
 	public void setHabitat(List<Habitat> habitat) {
 		this.habitat = habitat;
+	}
+	
+	public int compareTo(Responsabile responsabile){
+		int result;
+		result = this.getNome().compareTo(responsabile.getNome());
+		if (result == 0)
+			result = this.getCognome().compareTo(responsabile.getCognome());
+		return result;
 	}
 
 }
