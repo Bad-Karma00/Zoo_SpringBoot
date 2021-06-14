@@ -5,11 +5,11 @@ import javax.persistence.*;
 
 @Entity
 @Table(uniqueConstraints=@UniqueConstraint(columnNames={"nome"}))
-public class Animale {
+public class Animale implements Comparable<Animale> {
 	
 	@Id
 	@GeneratedValue (strategy = GenerationType.IDENTITY)
-	private Long Id;
+	private Long id;
 		
 	@Column (nullable = false)
 	private String nome;
@@ -23,16 +23,20 @@ public class Animale {
 	@ManyToOne(cascade= {CascadeType.PERSIST})
 	private Area areaAnimale;
 	
+	@Column(nullable = true, length = 64)
+    private String immagine;
+	
+
 	public Animale() {
 		
 	}
 
 	public Long getId() {
-		return Id;
+		return id;
 	}
 
 	public void setId(Long id) {
-		Id = id;
+		this.id = id;
 	}
 
 	public String getNome() {
@@ -67,5 +71,28 @@ public class Animale {
 		this.areaAnimale = areaAnimale;
 	}
 	
+	public String getImmagine() {
+		return immagine;
+	}
+
+	public void setImmagine(String immagine) {
+		this.immagine = immagine;
+	}
+	
+
+	 @Transient
+	    public String getPhotosImagePath() {
+	        if (immagine == null || id == null) return null;
+	         
+	        return "/photos/" + id + nome + "/" + immagine;
+	    }
+	
+	public int compareTo(Animale animale){
+		int result;
+		result = this.getNome().compareTo(animale.getNome());
+		if (result == 0)
+			result = this.getClasse().compareTo(animale.getClasse());
+		return result;
+	}
 
 }

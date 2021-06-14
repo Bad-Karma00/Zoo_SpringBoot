@@ -8,6 +8,7 @@ import javax.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import it.uniroma3.siw.spring.model.Area;
 import it.uniroma3.siw.spring.model.Habitat;
 import it.uniroma3.siw.spring.model.Responsabile;
 import it.uniroma3.siw.spring.repository.HabitatRepository;
@@ -18,6 +19,9 @@ public class HabitatService {
 
 	@Autowired
 	private HabitatRepository habitatRepository; 
+	
+	@Autowired 
+	private AreaService areaService;	
 	
 	
 	@Transactional
@@ -55,15 +59,15 @@ public class HabitatService {
 	//
 	@Transactional
 	public void delete(Habitat collezione){
-	//	List<Opera> opere = operaService.tutte();
-		//if(!(opere.isEmpty())) {
-		//for(Opera opera : opere) {
-			//if(opera.getCollezione().getId() == collezione.getId()) {
-				//opera.setCollezione(null);
-			//}
-	//	}
-		//}
+	List<Area> aree = areaService.tutte();
+		if(!(aree.isEmpty())) {
+		for(Area area : aree) {
+					area.setHabitat(null);
+			}
+	}
+	
 		this.habitatRepository.delete(collezione);
 	}
 }
+
 
