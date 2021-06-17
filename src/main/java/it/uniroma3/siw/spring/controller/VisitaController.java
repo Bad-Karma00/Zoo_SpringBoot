@@ -26,13 +26,6 @@ public class VisitaController {
 	
 	@Autowired
 	private VisitaValidator visitaValidator;
-	
-    
-    @RequestMapping(value="/addVisita", method = RequestMethod.GET)
-    public String addVisita(Model model) {
-    		model.addAttribute("visita", new Visita());
-    		return "prenota.html";
-    }
     
     
     @RequestMapping(value="/rimVisita", method = RequestMethod.GET)
@@ -50,7 +43,7 @@ public class VisitaController {
     		Visita visitaDaRim = visitaService.visitaPerId(visitaID);
     		this.visitaService.delete(visitaDaRim);
     		model.addAttribute("visite", this.visitaService.tutte());
-    		return "VisitaEliminata.html";    //pagina per l'utente generico che dice la prenotazione è stata elimnata con successo//
+    		return "VisitaEliminata.html";    //pagina per l'utente generico che dice la prenotazione ï¿½ stata elimnata con successo//
     		}
     
  
@@ -61,7 +54,7 @@ public class VisitaController {
     		return "visite.html";//pagina per admin con tutte le visite magari per data //
     }
     
-    @RequestMapping(value = "/visita", method = RequestMethod.POST)
+    @RequestMapping(value = "/addVisita", method = RequestMethod.POST)
     public String newVisita(@Valid @ModelAttribute("visita") Visita visita, 
     								Model model, BindingResult bindingResult) {
     	
@@ -69,7 +62,8 @@ public class VisitaController {
         if (!bindingResult.hasErrors()) {
         	this.visitaService.inserisci(visita);
             model.addAttribute("visita", this.visitaService.tutte());
-            return "VisitaConfermata.html";//pagina di avvenuta conferma della visita che stampa tutti attrinuti incluso id//
+            model.addAttribute("visita", visita);
+            return "VisitaConfermata.html";//pagina di avvenuta conferma della visita che stampa tutti gli attributi incluso id//
         }
         return "prenota.html";
     }
