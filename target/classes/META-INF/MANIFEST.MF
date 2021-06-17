@@ -1,6 +1,10 @@
 Manifest-Version: 1.0
-Build-Jdk-Spec: 15
-Implementation-Title: Zoo_SpringBoot-1
+Built-By: Karma
+Build-Jdk: 15.0.2
+Implementation-Title: Zoo
 Implementation-Version: 0.0.1-SNAPSHOT
+Implementation-Vendor-Id: it.uniroma3.siw
+Implementation-URL: https://projects.spring.io/spring-boot/#/spring-boot
+ -starter-parent/Zoo_SpringBoot
 Created-By: Maven Integration for Eclipse
 
