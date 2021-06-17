@@ -1,20 +1,45 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head  th:replace="fragments/basePrenota.html :: headerfiles(title=#{pageTitle.Prenota})"> </head>
-<body>
   
-  <header th:replace="fragments/basePrenota.html :: intestazione"></header>
+<header th:replace="fragments/basePrenota.html :: intestazione"></header>
 <body>
+
 <div class="pag2">
 	<div class="InformazioniR">
   
   <div class="InformazioniC2">
 	<div class="InfoContainer">
-			<h2>Prezzo di un biglietto: 5€</h2>
-			<form action="controller" method="post">
-				<div>Nome: <input type="text" name="nome" value=""/></div>
-				<div>Cognome: <input type="text" name="cognome" value=""/></div>
-				<div><input type="submit" name="submit" value="Prenota" /></div>
+			<h2>Prezzo di un biglietto: 5â‚¬</h2>
+			<form th:action="@{/addVisita}" method="POST" th:object="${visita}">
+			<div th:if="${#fields.hasGlobalErrors()}">
+  			<p th:each="err : ${#fields.globalErrors()}" th:text="${err}">...</p>
+			</div>
+  			
+  			<div class="form">
+  				<span>Nome:</span>
+				<span><input type="text" th:field="*{nome}" /></span>
+				<span th:if="${#fields.hasErrors('nome')}" th:errors="*{nome}"></span>
+			</div>
+			
+			<div class="form">
+				<span>Cognome:</span>
+				<span><input type="text" th:field="*{cognome}" /></span>
+				<span th:if="${#fields.hasErrors('cognome')}" th:errors="*{cognome}"></span>
+			</div>	
+			
+			<div class="form">
+				<span>Data:</span>
+				<span><input type="date" th:field="*{data}" /></span>
+				<span th:if="${#fields.hasErrors('data')}" th:errors="*{data}"></span>
+			</div>	
+			
+			
+			<div class="form">
+				<span><button type="submit">Invio</button></span>
+			</div>
+			
 			</form>
+			
 			</div>
 		</div>
 	</div>

@@ -4,6 +4,8 @@ import java.time.LocalDate;
 
 import javax.persistence.*;
 
+import org.springframework.format.annotation.DateTimeFormat;
+
 
 @Entity
 @Table(uniqueConstraints=@UniqueConstraint(columnNames={"nome"}))
@@ -13,6 +15,7 @@ import javax.persistence.*;
 	@GeneratedValue (strategy = GenerationType.IDENTITY)
 	private Long Id;
 	
+	@DateTimeFormat(pattern = "yyyy-MM-dd")
 	@Column (nullable = false)
 	private LocalDate data;
 	
