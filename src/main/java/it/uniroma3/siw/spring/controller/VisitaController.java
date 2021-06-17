@@ -44,7 +44,7 @@ public class VisitaController {
     @RequestMapping(value = "/rimozioneVisita", method = RequestMethod.POST)
     public String rimozioneVisita(@ModelAttribute("visita") Visita visita,
     							 Model model, BindingResult bindingResult,
-								 @RequestParam(value = "vsiitaSelezionato") Long visitaID){
+								 @RequestParam(value = "visitaSelezionato") Long visitaID){
     		List<Visita> visite = (List<Visita>) visitaService.tutte();
     		Collections.sort(visite);
     		Visita visitaDaRim = visitaService.visitaPerId(visitaID);
