@@ -6,14 +6,15 @@ import java.util.List;
 
 import javax.persistence.*;
 
+import org.springframework.format.annotation.DateTimeFormat;
+
 
 @Entity
-@Table(uniqueConstraints=@UniqueConstraint(columnNames={"nome"}))
- public class Responsabile implements Comprable<Responsabile> {
+@Table(uniqueConstraints=@UniqueConstraint(columnNames={"nome", "cognome"}))
+ public class Responsabile implements Comparable<Responsabile> {
 	
 	@Id
-	@GeneratedValue (strategy = GenerationType.IDENTITY)
-	private int matricola;
+	private Long matricola;
 	
 	@Column (nullable = false)
 	private String nome;
@@ -25,6 +26,7 @@ import javax.persistence.*;
 	private String email;
 	
 	@Column (nullable = false)
+	@DateTimeFormat(pattern = "yyyy-MM-dd")
 	private LocalDate dataNascita;
 	
 	@OneToMany (mappedBy = "responsabile", cascade= {CascadeType.PERSIST})
@@ -36,12 +38,12 @@ import javax.persistence.*;
 	}
 
 
-	public int getMatricola() {
+	public Long getMatricola() {
 		return matricola;
 	}
 
 
-	public void setMatricola(int matricola) {
+	public void setMatricola(Long matricola) {
 		this.matricola = matricola;
 	}
 

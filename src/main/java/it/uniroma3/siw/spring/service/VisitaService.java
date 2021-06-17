@@ -8,6 +8,8 @@ import javax.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import it.uniroma3.siw.spring.model.Habitat;
+import it.uniroma3.siw.spring.model.Responsabile;
 import it.uniroma3.siw.spring.model.Visita;
 import it.uniroma3.siw.spring.repository.VisitaRepository;
 
@@ -50,4 +52,9 @@ public class VisitaService {
 		else 
 			return false;
 	}
+	
+	@Transactional
+	public void delete(Visita visita){
+			this.visitaRepository.delete(visita);
+		}
 }

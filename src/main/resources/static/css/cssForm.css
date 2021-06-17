@@ -106,10 +106,8 @@ li.dropdown1 {
 
 
 .parallax {
-  background-image: url("https://i.pinimg.com/originals/55/10/54/551054340cdd3a9ef4452ec51b513085.jpg");
-
+  background-image: url("https://www.rai.it/dl/img/2020/03/05/1600x900_1583427635919_lontra.jpg");
   min-height: 400px; 
-
   background-attachment: fixed;
   background-position: center;
   background-repeat: no-repeat;
@@ -128,75 +126,21 @@ li.dropdown1 {
     line-height: 0;
 }
 
-
-
-.InformazioniC2{
-  flex: 35%; /*Cambia quanta % l'oggetto si prende all'interno della flexbox*/
-  max-width: 100%;
-  padding: 0 10px;
+.form{
+	font-family:verdana;
+	font-size:25px;
+	color:white;
+	padding-left:10px;
+	text-align:center;
+	padding-top:20px;
+	font-style:italic;
+	
 }
 
-.InformazioniR{
-	display:flex;
-	justify-content: left;
-	flex-wrap: wrap;
-	background-color:cyan;
+.titolo{
+    font-size:35px;
+	text-align:center;
+		color:white;
+		padding-top:20px;
 }
 
-.InformazioniC1{
-  flex: 15%; /*Cambia quanta % l'oggetto si prende all'interno della flexbox*/
-  max-width: 50%;
-}
-
-.InformazioniC1 img {
-  width: 100%;
-  object-fit:cover;
-}
-
-.InformazioniC2-2{
-  flex: 35%; /*Cambia quanta % l'oggetto si prende all'interno della flexbox*/
-  max-width: 100%;
-  padding: 0 10px;
-}
-
-.InformazioniR2{
-	display:flex;
-	justify-content: right;
-	flex-wrap: wrap;
-	background-color:pink;
-}
-
-.InformazioniC1-2{
-  flex: 15%; /*Cambia quanta % l'oggetto si prende all'interno della flexbox*/
-  max-width: 50%;
-}
-
-.InformazioniC1-2 img {
-  width: 100%;
-  object-fit:cover;
-  
-}
-
-.InformazioniC2-3{
-  flex: 35%; /*Cambia quanta % l'oggetto si prende all'interno della flexbox*/
-  max-width: 100%;
-  padding: 0 10px;
-}
-
-.InformazioniR3{
-	display:flex;
-	justify-content: right;
-	flex-wrap: wrap;
-	background-color:green;
-}
-
-.InformazioniC1-3{
-  flex: 15%; /*Cambia quanta % l'oggetto si prende all'interno della flexbox*/
-  max-width: 50%;
-}
-
-.InformazioniC1-3 img {
-  width: 100%;
-  object-fit:cover;
-  
-}

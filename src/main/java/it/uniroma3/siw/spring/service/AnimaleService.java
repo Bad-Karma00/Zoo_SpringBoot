@@ -10,7 +10,6 @@ import org.springframework.stereotype.Service;
 
 import it.uniroma3.siw.spring.model.Animale;
 import it.uniroma3.siw.spring.model.Area;
-import it.uniroma3.siw.spring.model.Opera;
 import it.uniroma3.siw.spring.repository.AnimaleRepository;
 
 @Service
@@ -46,7 +45,7 @@ public class AnimaleService {
 
 	@Transactional
 	public boolean alreadyExists(Animale animale) {
-		List<Animale> animali = this.animaleRepository.findByNomeAndArea(animale.getNome(),animale.getAreaAnimale());
+		List<Animale> animali = this.animaleRepository.findByNomeAndArea(animale.getNome(),animale.getArea());
 		if (animali.size() > 0)
 			return true;
 		else 

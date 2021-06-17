@@ -30,7 +30,7 @@ import javax.persistence.*;
 	@ManyToOne
 	private Habitat habitat;
 	
-	@OneToMany (mappedBy = "areaAnimale", cascade= {CascadeType.PERSIST})
+	@OneToMany (mappedBy = "area", cascade= {CascadeType.PERSIST})
 	private List<Animale> animali;
 	
 	public Area() {
