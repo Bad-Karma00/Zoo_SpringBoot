@@ -1,0 +1,48 @@
+<meta name="robots" content="noindex">
+<html xmlns:th="http://www.thymeleaf.org">
+<head  th:replace="fragments/baseForm.html :: headerfiles(title=#{pageTitle.resposabileInserisci})"> </head>
+<body>
+  
+  <header th:replace="fragments/baseForm.html :: intestazione"></header>
+  <div class="parallax">	
+	<div>
+		<div class="Titolo">Inserisci i dati di un Responsabile</div>
+	</div>
+	<form th:action="@{/responsabile}" method="POST" th:object="${responsabile}">
+		<div th:if="${#fields.hasGlobalErrors()}">
+  			<p th:each="err : ${#fields.globalErrors()}" th:text="${err}">...</p>
+		</div>		
+		<div>
+			<div class="form">
+				<span>Matricola:</span>
+				<span><input type="text" th:field="*{matricola}" /></span>
+				<span th:if="${#fields.hasErrors('matricola')}" th:errors="*{matricola}"></span>
+			</div>	
+			<div class="form">
+				<span>Nome:</span>
+				<span><input type="text" th:field="*{nome}" /></span>
+				<span th:if="${#fields.hasErrors('nome')}" th:errors="*{nome}"></span>
+			</div>		
+			<div class="form">
+				<span>Cognome:</span>
+				<span><input type="text" th:field="*{cognome}" /></span>
+				<span th:if="${#fields.hasErrors('cognome')}" th:errors="*{cognome}"></span>
+			</div>
+			<div class="form">
+				<span>Data di Nascita:</span>
+				<span><input type="date" th:field="*{dataNascita}" /></span>
+				<span th:if="${#fields.hasErrors('dataNascita')}" th:errors="*{dataNascita}"></span>
+			</div>
+			<div class="form">
+				<span>E-mail:</span>
+				<span><input type="text" th:field="*{email}" /></span>
+				<span th:if="${#fields.hasErrors('email')}" th:errors="*{email}"></span>
+			</div>			
+		</form>
+			<div class="form">
+				<span><button type="submit">Invio</button></span>
+			</div>
+		</div>
+   <div class="parallax"></div>
+</body>
+</html>

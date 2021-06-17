@@ -1,0 +1,19 @@
+<meta name="robots" content="noindex">
+<html xmlns:th="http://www.thymeleaf.org">
+<head  th:replace="fragments/baseLista.html :: headerfiles(title=#{pageTitle.responsabiliLista})"> </head>
+<body>
+
+<header th:replace="fragments/baseLista.html :: intestazione"></header>
+  	
+  	<div class="parallax">
+	<div class="titolo">Lista dei Responsabili</div>
+    	<div class="lista">
+    	<ul>
+			<li th:each="responsabile : ${responsabili}">
+				 <span th:text="|${responsabile.nome} ${responsabile.cognome} ${responsabile?.habitat}|"/></span>	
+		</ul>
+		</div>
+	</div>
+	<div class="parallax">	</div>
+</body>
+</html>

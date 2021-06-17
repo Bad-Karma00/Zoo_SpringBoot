@@ -7,7 +7,7 @@ import javax.persistence.*;
 
 @Entity
 @Table(uniqueConstraints=@UniqueConstraint(columnNames={"nome"}))
- public class Visita {
+ public class Visita implements Comparable<Visita>{
 	
 	@Id
 	@GeneratedValue (strategy = GenerationType.IDENTITY)
@@ -74,6 +74,15 @@ import javax.persistence.*;
 
 	public void setCognome(String cognome) {
 		this.cognome = cognome;
+	}
+	
+	
+	public int compareTo(Visita visita){
+		int result;
+		result = this.getNome().compareTo(visita.getNome());
+		if (result == 0)
+			result = this.getCognome().compareTo(visita.getCognome());
+		return result;
 	}
 
 }

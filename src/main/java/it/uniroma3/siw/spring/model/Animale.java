@@ -21,7 +21,7 @@ public class Animale implements Comparable<Animale> {
 	private String ordine;
 	
 	@ManyToOne(cascade= {CascadeType.PERSIST})
-	private Area areaAnimale;
+	private Area area;
 	
 	@Column(nullable = true, length = 64)
     private String immagine;
@@ -63,12 +63,12 @@ public class Animale implements Comparable<Animale> {
 		this.ordine = ordine;
 	}
 
-	public Area getAreaAnimale() {
-		return areaAnimale;
+	public Area getArea() {
+		return area;
 	}
 
 	public void setAreaAnimale(Area areaAnimale) {
-		this.areaAnimale = areaAnimale;
+		this.area = areaAnimale;
 	}
 	
 	public String getImmagine() {

@@ -26,12 +26,6 @@ body{
   text-transform: uppercase;
 }
 
-.dropbtn1{
- color: yellow;
-  text-decoration: none;
-  text-transform: uppercase;
-}
-
 .navigation-bar li:hover a {
   color: #d94f5c;
 }
@@ -84,10 +78,11 @@ li.dropdown1 {
 }
 
 .pag1 {
-	background-image:url("https://wallpaperaccess.com/full/3979440.jpg");
+	background-image:url("https://chapmanbrowns.files.wordpress.com/2015/04/scratching-head-monkey.jpg");
 	background-attachment: fixed;
 	background-position: center;
 	background-repeat: no-repeat;
+	background-size: cover;
 	color:white;
 }
 
@@ -97,6 +92,11 @@ li.dropdown1 {
 	margin-right: auto;
 	width: 20%;
 }
+
+.pag2{
+	background-image:url("https://images.photowall.com/products/62137/zoo-animals.jpg?h=699&q=85");
+}
+
 #logo{
 	display: block;
 	margin-left:auto;
@@ -129,7 +129,6 @@ li.dropdown1 {
 }
 
 
-
 .InformazioniC2{
   flex: 35%; /*Cambia quanta % l'oggetto si prende all'interno della flexbox*/
   max-width: 100%;
@@ -140,7 +139,7 @@ li.dropdown1 {
 	display:flex;
 	justify-content: left;
 	flex-wrap: wrap;
-	background-color:cyan;
+	background-color:white;
 }
 
 .InformazioniC1{
@@ -151,52 +150,4 @@ li.dropdown1 {
 .InformazioniC1 img {
   width: 100%;
   object-fit:cover;
-}
-
-.InformazioniC2-2{
-  flex: 35%; /*Cambia quanta % l'oggetto si prende all'interno della flexbox*/
-  max-width: 100%;
-  padding: 0 10px;
-}
-
-.InformazioniR2{
-	display:flex;
-	justify-content: right;
-	flex-wrap: wrap;
-	background-color:pink;
-}
-
-.InformazioniC1-2{
-  flex: 15%; /*Cambia quanta % l'oggetto si prende all'interno della flexbox*/
-  max-width: 50%;
-}
-
-.InformazioniC1-2 img {
-  width: 100%;
-  object-fit:cover;
-  
-}
-
-.InformazioniC2-3{
-  flex: 35%; /*Cambia quanta % l'oggetto si prende all'interno della flexbox*/
-  max-width: 100%;
-  padding: 0 10px;
-}
-
-.InformazioniR3{
-	display:flex;
-	justify-content: right;
-	flex-wrap: wrap;
-	background-color:green;
-}
-
-.InformazioniC1-3{
-  flex: 15%; /*Cambia quanta % l'oggetto si prende all'interno della flexbox*/
-  max-width: 50%;
-}
-
-.InformazioniC1-3 img {
-  width: 100%;
-  object-fit:cover;
-  
 }

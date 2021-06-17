@@ -25,7 +25,10 @@ import javax.persistence.*;
 	private String nome;
 	
 	@Column(nullable = true)
-	private String immagine;
+	private String immagineTop;
+	
+	@Column(nullable = true, length = 64)
+    private String immagine;
 	
 	@ManyToOne(cascade= {CascadeType.PERSIST})
 	private Responsabile responsabile;
@@ -99,6 +102,13 @@ import javax.persistence.*;
 	         
 	        return "/photos/" + id + nome + "/" + immagine;
 	    }
+	 
+	 @Transient
+	    public String getPhotosImagePathTop() {
+	        if (immagine == null || id == null) return null;
+	         
+	        return "/photos/" + id + nome + "/" + immagineTop;
+	    }
 	
 	public int compareTo(Habitat habitat){
 		int result;
@@ -106,6 +116,14 @@ import javax.persistence.*;
 		if (result == 0)
 			result = this.getResponsabile().compareTo(habitat.getResponsabile());
 		return result;
+	}
+	
+	public String getImmagineTop() {
+		return immagineTop;
+	}
+
+	public void setImmagineTop(String immagineTop) {
+		this.immagineTop = immagineTop;
 	}
 
 	

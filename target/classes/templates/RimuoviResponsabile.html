@@ -1,0 +1,32 @@
+<meta name="robots" content="noindex">
+<html xmlns:th="http://www.thymeleaf.org">
+<head  th:replace="fragments/baseForm.html :: headerfiles(title=#{pageTitle.responsabileRimuovi})"> </head>
+<body>
+  
+  <header th:replace="fragments/baseForm.html :: intestazione"></header>
+  <div class="parallax">	
+	<div>
+		<div class="Titolo">Seleziona il responsabile da rimuovere</div>
+	</div>
+	<form th:action="@{/rimozioneResponsabile}" method="POST" th:object="${responsabile}">
+		<div class="form">
+			<span>Responsabile:</span>
+			<select  name="responsabileSelezionato" id="autoUpdate" class="autoUpdate">
+    		<option value="0">Seleziona un responsabile:</option>
+    		<option th:each="responsabile : ${responsabili}"
+    				th:value="${responsabile.matricola}" 
+    				th:text="|${responsabile.nome} ${responsabile.cognome}|">
+    		</option>
+			</select>
+			<div class="form">
+			<span><button type="submit">Invio</button></span>
+			</div>
+		 </div>				
+		</form>
+			<div>
+				
+			</div>
+		</div>
+   <div class="parallax"></div>
+</body>
+</html>
