@@ -25,3 +25,12 @@ hs_err_pid*
 pom.xml
 src/main/resources/application.properties
 target/classes/application.properties
+pom.xml
+.settings/org.eclipse.jdt.core.prefs
+.settings/org.eclipse.jdt.apt.core.prefs
+.settings/org.eclipse.core.resources.prefs
+.project
+pom.xml
+.project
+.project
+.project
