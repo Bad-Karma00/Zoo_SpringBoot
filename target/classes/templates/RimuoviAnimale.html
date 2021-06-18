@@ -1,0 +1,32 @@
+<meta name="robots" content="noindex">
+<html xmlns:th="http://www.thymeleaf.org">
+<head  th:replace="fragments/baseForm.html :: headerfiles(title=#{pageTitle.responsabileRimuovi})"> </head>
+<body>
+  
+  <header th:replace="fragments/baseForm.html :: intestazione"></header>
+  <div class="parallax">	
+	<div>
+		<div class="Titolo">Seleziona l'animale da rimuovere</div>
+	</div>
+	<form th:action="@{/rimozioneAnimale}" method="POST" th:object="${animale}">
+		<div class="form">
+			<span>Animale:</span>
+			<select  name="animaleSelezionato" id="autoUpdate" class="autoUpdate">
+    		<option value="0">Seleziona un animale:</option>
+    		<option th:each="animale : ${animali}"
+    				th:value="${animale.id}" 
+    				th:text="|${animale.nome} ${animale.classe}|">
+    		</option>
+			</select>
+			<div class="form">
+			<span><button type="submit">Invio</button></span>
+			</div>
+		 </div>				
+		</form>
+			<div>
+				
+			</div>
+		</div>
+   <div class="parallax"></div>
+</body>
+</html>

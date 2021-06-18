@@ -25,7 +25,6 @@ import org.springframework.format.annotation.DateTimeFormat;
 	@Column (nullable = false)
 	private String cognome;
 	
-
 	
 	public Visita() {
 		

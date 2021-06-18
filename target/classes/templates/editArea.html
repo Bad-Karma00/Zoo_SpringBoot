@@ -1,0 +1,54 @@
+<meta name="robots" content="noindex">
+<html xmlns:th="http://www.thymeleaf.org">
+<head  th:replace="fragments/baseForm.html :: headerfiles(title=#{pageTitle.areaModifica})"> </head>
+<body>
+  
+  <header th:replace="fragments/baseForm.html :: intestazione"></header>
+  <div class="parallax">
+  <div>	
+		<div class="Titolo">Seleziona l'area che vuoi modificare e i nuovi dati</div>
+	</div>
+	<form th:action="@{/modificaArea}" method="POST" th:object="${area}" enctype="multipart/form-data">
+			<div class="form">
+				<span>Area da modificare:</span>
+				<select  name="areaSelezionata" id="autoUpdate" class="autoUpdate">
+    			<option value="0">Seleziona l'area</option>
+    			<option th:each="area : ${aree}"
+    					th:value="${area.id}" 
+    					th:text="${area.nome}">
+    			</option>
+				</select>
+			</div>
+			<div class="form">
+				<span>Nome nuovo:</span>
+				<span><input type="text" th:field="*{nome}"/></span>
+			</div>
+			<div class="form">
+				<span>Descrizione nuova:</span>
+				<span><input type="text" th:field="*{descrizione}"/></span>
+			</div>		
+			<div class="form">
+				<span>Orario nuovo:</span>
+				<span><input type="time" th:field="*{orario}"/></span>
+			</div>
+			<div class="form">
+				<span>Habitat nuovo:</span>
+				<select  name="habitatSelezionato" id="autoUpdate" class="autoUpdate">
+    			<option value="0">Seleziona un habitat</option>
+    			<option th:each="habitat : ${habitats}"
+    					th:value="${habitat.id}" 
+    					th:text="${habitat.nome}">
+    			</option>
+				</select>
+				</div>
+				<div class="form">
+				<span>Immagine nuova:</span>
+				<span><input type="file" name="img" accept="image/png, image/jpeg" /></span>
+			    </div>
+				<div class="form">
+				<span><button type="submit">Invio</button></span>
+</div>
+</form>
+<div class="parallax"></div>
+</body>
+</html>

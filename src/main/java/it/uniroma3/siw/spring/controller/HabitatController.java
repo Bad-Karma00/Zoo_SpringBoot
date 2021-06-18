@@ -11,6 +11,7 @@ import java.util.List;
 
 import javax.validation.Valid;
 
+import org.apache.tomcat.util.http.fileupload.FileUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -24,6 +25,7 @@ import org.springframework.web.multipart.MultipartFile;
 
 import it.uniroma3.siw.spring.model.Habitat;
 import it.uniroma3.siw.spring.model.Responsabile;
+import it.uniroma3.siw.spring.service.AreaService;
 import it.uniroma3.siw.spring.service.HabitatService;
 import it.uniroma3.siw.spring.service.ResponsabileService;
 import it.uniroma3.siw.spring.validator.HabitatValidator;
@@ -40,17 +42,21 @@ public class HabitatController {
 	@Autowired
 	private ResponsabileService responsabileService;
 	
+	@Autowired
+	private AreaService areaService;
+	
     
     @RequestMapping(value="/addHabitat", method = RequestMethod.GET)
     public String addHabitat(Model model) {
     		model.addAttribute("habitat", new Habitat());
+    		model.addAttribute("responsabili", this.responsabileService.tutti());
     		return "InserisciHabitat.html";
     }
     
     
     @RequestMapping(value="/rimHabitat", method = RequestMethod.GET)
     public String rimHabitat(Model model) {
-    		model.addAttribute("habitat", this.habitatService.tutti());
+    		model.addAttribute("habitats", this.habitatService.tutti());
         	return "RimuoviHabitat.html";
     }
     
@@ -61,17 +67,11 @@ public class HabitatController {
     		List<Habitat> habitats = (List<Habitat>) habitatService.tutti();
     		Collections.sort(habitats);
     		Habitat habitatDaRim = habitatService.habitatPerId(habitatID);
-    	   	String fileName = StringUtils.cleanPath(habitatDaRim.getImmagine());
     	   	String uploadDir ="photos/"+ habitatDaRim.getId()+habitatDaRim.getNome();
     		Path uploadPath = Paths.get(uploadDir);
-    		 Path filePath = uploadPath.resolve(fileName);
-    		 Files.delete(filePath);
-    		   	String fileName2 = StringUtils.cleanPath(habitatDaRim.getImmagineTop());
-        		 Path filePath2 = uploadPath.resolve(fileName2);
-        		 Files.delete(filePath2);
-    		 Files.delete(uploadPath);
+        		 FileUtils.deleteDirectory(uploadPath.toFile());;
     		this.habitatService.delete(habitatDaRim);
-    		model.addAttribute("habitat", this.habitatService.tutti());
+    		model.addAttribute("habitats", this.habitatService.tutti());
     		return "habitats.html";
     }
     
@@ -94,17 +94,12 @@ public class HabitatController {
     								 Model model, BindingResult bindingResult) throws IOException{
     	    
     		Habitat habitatDaRim = habitatService.habitatPerId(habitatID);
-	   	    String fileName1 = StringUtils.cleanPath(habitatDaRim.getImmagine());
 	     	String uploadDir1 ="photos/"+ habitatDaRim.getId()+habitatDaRim.getNome();
 		    Path uploadPath1 = Paths.get(uploadDir1);
-		    Path filePath1 = uploadPath1.resolve(fileName1);
-		    Files.delete(filePath1);
-			String fileName2 = StringUtils.cleanPath(habitatDaRim.getImmagineTop());
-   		   Path filePath2 = uploadPath1.resolve(fileName2);
-   		    Files.delete(filePath2);
+   		  FileUtils.deleteDirectory(uploadPath1.toFile());;
         	List<Responsabile> responsabili = (List<Responsabile>) responsabileService.tutti();
         	Collections.sort(responsabili);
-         Responsabile responsabileNuovo =responsabileService.responsabilePerId(responsabileID);
+            Responsabile responsabileNuovo =responsabileService.responsabilePerId(responsabileID);
         	String fileName = StringUtils.cleanPath(immagine.getOriginalFilename());
         	String fileNameTop = StringUtils.cleanPath(immagineTop.getOriginalFilename());
         	Habitat habitatNuovo = new Habitat();
@@ -119,7 +114,7 @@ public class HabitatController {
         	habitatNuovo.setImmagineTop(immagineTop.getOriginalFilename());
         	
         	habitatService.inserisci(habitatNuovo);
-            model.addAttribute("habitat", this.habitatService.tutti());
+            model.addAttribute("habitats", this.habitatService.tutti());
             String uploadDir ="photos/"+ habitatNuovo.getId()+habitatNuovo.getNome();
             
             Path uploadPath = Paths.get(uploadDir);
@@ -128,32 +123,35 @@ public class HabitatController {
                 Files.createDirectories(uploadPath);
             }
              
+            
             try (InputStream inputStream = immagine.getInputStream()) {
+         	   try (InputStream inputStream2 = immagineTop.getInputStream()) {
+                    Path filePath2 = uploadPath.resolve(fileNameTop);
+                    Files.copy(inputStream2, filePath2, StandardCopyOption.REPLACE_EXISTING);
+                } catch (IOException ioe) {        
+                    throw new IOException("Salvataggio non riuscito: " + fileNameTop, ioe);
+                } 
                 Path filePath = uploadPath.resolve(fileName);
                 Files.copy(inputStream, filePath, StandardCopyOption.REPLACE_EXISTING);
             } catch (IOException ioe) {        
                 throw new IOException("Salvataggio non riuscito: " + fileName, ioe);
-            }    
-            
-            try (InputStream inputStream = immagineTop.getInputStream()) {
-                Path filePath = uploadPath.resolve(fileNameTop);
-                Files.copy(inputStream, filePath, StandardCopyOption.REPLACE_EXISTING);
-            } catch (IOException ioe) {        
-                throw new IOException("Salvataggio non riuscito: " + fileNameTop, ioe);
-            } 
+            }  
             return "habitats.html";
     }
     
     @RequestMapping(value = "/habitat/{id}", method = RequestMethod.GET)
     public String getHabitat(@ModelAttribute("id") Long id, Model model) {
-Habitat habitat=this.habitatService.habitatPerId(id);
+     Habitat habitat=this.habitatService.habitatPerId(id);
     	model.addAttribute("habitat", habitat);
+    	model.addAttribute("immagineT",habitat.getPhotosImagePathTop());
+    	model.addAttribute("immagine",habitat.getPhotosImagePath());
+    	model.addAttribute("aree",this.areaService.tutte());
     	return "habitat.html";
     }
 
     @RequestMapping(value = "/habitat", method = RequestMethod.GET)
     public String getHabitats(Model model) {
-    		model.addAttribute("habitat", this.habitatService.tutti());
+    		model.addAttribute("habitats", this.habitatService.tutti());
     		return "habitats.html";
     }
     
@@ -175,11 +173,11 @@ Habitat habitat=this.habitatService.habitatPerId(id);
 			String fileName2 = StringUtils.cleanPath(immagineTop.getOriginalFilename());
 			habitat.setImmagine(fileName);
             habitat.setImmagine(immagine.getOriginalFilename());
-			habitat.setImmagine(fileName2);
-            habitat.setImmagine(immagineTop.getOriginalFilename());
+			habitat.setImmagineTop(fileName2);
+            habitat.setImmagineTop(immagineTop.getOriginalFilename());
         	habitat.setResponsabile(responsabile);
         	this.habitatService.inserisci(habitat);
-            model.addAttribute("habitat", this.habitatService.tutti());
+            model.addAttribute("habitats", this.habitatService.tutti());
            String uploadDir ="photos/"+ habitat.getId()+habitat.getNome();
             
            Path uploadPath = Paths.get(uploadDir);
@@ -189,17 +187,17 @@ Habitat habitat=this.habitatService.habitatPerId(id);
            }
             
            try (InputStream inputStream = immagine.getInputStream()) {
+        	   try (InputStream inputStream2 = immagineTop.getInputStream()) {
+                   Path filePath2 = uploadPath.resolve(fileName2);
+                   Files.copy(inputStream2, filePath2, StandardCopyOption.REPLACE_EXISTING);
+               } catch (IOException ioe) {        
+                   throw new IOException("Salvataggio non riuscito: " + fileName2, ioe);
+               } 
                Path filePath = uploadPath.resolve(fileName);
                Files.copy(inputStream, filePath, StandardCopyOption.REPLACE_EXISTING);
            } catch (IOException ioe) {        
                throw new IOException("Salvataggio non riuscito: " + fileName, ioe);
            }  
-           try (InputStream inputStream = immagineTop.getInputStream()) {
-               Path filePath = uploadPath.resolve(fileName2);
-               Files.copy(inputStream, filePath, StandardCopyOption.REPLACE_EXISTING);
-           } catch (IOException ioe) {        
-               throw new IOException("Salvataggio non riuscito: " + fileName2, ioe);
-           } 
             return "habitats.html";
         }
         return "InserisciHabitat.html";

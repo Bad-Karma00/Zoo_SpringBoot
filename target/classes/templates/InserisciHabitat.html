@@ -1,0 +1,56 @@
+<meta name="robots" content="noindex">
+<html xmlns:th="http://www.thymeleaf.org">
+<head  th:replace="fragments/baseForm.html :: headerfiles(title=#{pageTitle.habitatInserisci})"> </head>
+<body>
+  
+  <header th:replace="fragments/baseForm.html :: intestazione"></header>
+  <div class="parallax">	
+	<div>
+		<div class="Titolo">Inserisci i dati di un Habitat</div>
+	</div>
+	<form th:action="@{/habitat}" method="POST" th:object="${habitat}" enctype ="multipart/form-data">
+		<div th:if="${#fields.hasGlobalErrors()}">
+  			<p th:each="err : ${#fields.globalErrors()}" th:text="${err}">...</p>
+		</div>		
+		<div>
+			<div class="form">
+				<span>Nome:</span>
+				<span><input type="text" th:field="*{nome}" /></span>
+				<span th:if="${#fields.hasErrors('nome')}" th:errors="*{nome}"></span>
+			</div>	
+			<div class="form">
+				<span>Dimensione:</span>
+				<span><input type="number" th:field="*{dimensione}" /></span>
+				<span th:if="${#fields.hasErrors('dimensione')}" th:errors="*{dimensione}"></span>
+			</div>		
+			<div class="form">
+				<span>Descrizione:</span>
+				<span><input type="text" th:field="*{descrizione}" /></span>
+				<span th:if="${#fields.hasErrors('descrizione')}" th:errors="*{descrizione}"></span>
+			</div>
+				<div class="form">
+				<span>Immagine:</span>
+				<span><input type="file" name="img" accept="image/png, image/jpeg" /></span>
+			</div>
+				<div class="form">
+				<span>ImmagineTop:</span>
+				<span><input type="file" name="imgTop" accept="image/png, image/jpeg" /></span>
+			</div>
+			<div class="form">
+				<span>Responsabile:</span>
+				<select  name="responsabileSelezionato" id="autoUpdate" class="autoUpdate">
+    			<option value="0">Seleziona un responsabile</option>
+    			<option th:each="responsabile : ${responsabili}"
+    					th:value="${responsabile.matricola}" 
+    					th:text="|${responsabile.nome} ${responsabile.cognome}|">
+    			</option>
+				</select>
+			</div>
+			</form>
+			<div class="form">
+				<span><button type="submit">Invio</button></span>
+			</div>
+			</div>
+   <div class="parallax"></div>
+</body>
+</html>
