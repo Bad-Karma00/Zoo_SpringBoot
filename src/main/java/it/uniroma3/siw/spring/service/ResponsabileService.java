@@ -56,7 +56,7 @@ public class ResponsabileService {
 	}
 	
 	@Transactional
-	public void delete(Responsabile collezione){
+	public void delete(Responsabile responsabile){
 		List<Habitat> habitats = habitatService.tutti();
 		if(!(habitats.isEmpty())) {
 			for(Habitat habitat : habitats) {
@@ -64,6 +64,6 @@ public class ResponsabileService {
 				}
 		}
 		
-			this.responsabileRepository.delete(collezione);
+			this.responsabileRepository.delete(responsabile);
 		}
 }

@@ -35,7 +35,7 @@
 			</div>
 			<div class="form">
 				<span>E-mail:</span>
-				<span><input type="text" th:field="*{email}" /></span>
+				<span><input type="email" th:field="*{email}" /></span>
 				<span th:if="${#fields.hasErrors('email')}" th:errors="*{email}"></span>
 			</div>			
 		</form>

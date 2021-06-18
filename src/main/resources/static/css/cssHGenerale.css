@@ -71,6 +71,13 @@ li.dropdown1 {
 }
 
 
+.dropbtn1{
+ color: yellow;
+  text-decoration: none;
+  text-transform: uppercase;
+}
+
+
 
 .banner{
 	
@@ -99,6 +106,13 @@ li.dropdown1 {
 	width: 9%;
 }
 
+.ImgC{
+	font-size:40px;
+	font-style:italic;
+	color:yellow;
+	
+}
+
 
 .parallax {
   background-image: url("https://i.pinimg.com/originals/55/10/54/551054340cdd3a9ef4452ec51b513085.jpg");
@@ -123,11 +137,11 @@ li.dropdown1 {
     line-height: 0;
 }
 
-
 .InformazioniC2{
   flex: 35%; /*Cambia quanta % l'oggetto si prende all'interno della flexbox*/
   max-width: 100%;
   padding: 0 10px;
+  
 }
 
 .InformazioniR{

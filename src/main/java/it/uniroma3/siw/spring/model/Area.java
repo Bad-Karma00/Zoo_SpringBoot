@@ -2,6 +2,8 @@ package it.uniroma3.siw.spring.model;
 
 
 import java.time.LocalDateTime;
+import java.time.LocalTime;
+import java.util.Collections;
 import java.util.List;
 
 import javax.persistence.*;
@@ -22,11 +24,11 @@ import javax.persistence.*;
 	private String descrizione;
 	
 	@Column (nullable = false)
-	private LocalDateTime orario;
+	private LocalTime orario;
 	
 	@Column(nullable = true, length = 64)
     private String immagine;
-	
+
 	@ManyToOne
 	private Habitat habitat;
 	
@@ -61,11 +63,11 @@ import javax.persistence.*;
 		this.descrizione = descrizione;
 	}
 
-	public LocalDateTime getOrario() {
+	public LocalTime getOrario() {
 		return orario;
 	}
 
-	public void setOrario(LocalDateTime orario) {
+	public void setOrario(LocalTime orario) {
 		this.orario = orario;
 	}
 
@@ -85,11 +87,30 @@ import javax.persistence.*;
 		this.animali = animali;
 	}
 	
+	
+	public String getImmagine() {
+		return immagine;
+	}
+
+	public void setImmagine(String immagine) {
+		this.immagine = immagine;
+	}
+	
 	 @Transient
 	    public String getPhotosImagePath() {
 	        if (immagine == null || id == null) return null;
 	         
 	        return "/photos/" + id + nome + "/" + immagine;
+	    }
+	 
+	 @Transient
+	    public String getPhotosAnimale() {
+		 if(animali.isEmpty()) return null;
+			Collections.shuffle(animali);
+			Animale animale=animali.get(0);
+	        if (animale.getId() == null || animale.getImmagine() == null) return null;
+	         
+	        return "/photos/" + animale.getId() + animale.getNome() + "/" + animale.getImmagine();
 	    }
 
 	public int compareTo(Area area){

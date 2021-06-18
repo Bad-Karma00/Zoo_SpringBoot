@@ -22,7 +22,6 @@ import javax.persistence.*;
 	@Column (nullable = false)
 	private String cognome;
 	
-
 	
 	public Visita() {
 		

@@ -1,0 +1,58 @@
+<meta name="robots" content="noindex">
+<html xmlns:th="http://www.thymeleaf.org">
+<head  th:replace="fragments/baseForm.html :: headerfiles(title=#{pageTitle.habitatModifica})"> </head>
+<body>
+  
+  <header th:replace="fragments/baseForm.html :: intestazione"></header>
+  <div class="parallax">
+  <div>	
+		<div class="Titolo">Seleziona habitat che vuoi modificare e i nuovi dati</div>
+	</div>
+	<form th:action="@{/modificaHabitat}" method="POST" th:object="${habitat}" enctype="multipart/form-data">
+			<div class="form">
+				<span>Habitat da modificare:</span>
+				<select  name="habitatSelezionato" id="autoUpdate" class="autoUpdate">
+    			<option value="0">Seleziona habitat</option>
+    			<option th:each="habitat : ${habitats}"
+    					th:value="${habitat.id}" 
+    					th:text="${habitat.nome}">
+    			</option>
+				</select>
+			</div>
+			<div class="form">
+				<span>Nome nuovo:</span>
+				<span><input type="text" th:field="*{nome}"/></span>
+			</div>
+			<div class="form">
+				<span>Dimensione nuova:</span>
+				<span><input type="number" th:field="*{dimensione}"/></span>
+			</div>		
+			<div class="form">
+				<span>Descrizione nuova:</span>
+				<span><input type="text" th:field="*{descrizione}"/></span>
+			</div>
+			<div class="form">
+				<span>Responsabile nuovo:</span>
+				<select  name="responsabileSelezionato" id="autoUpdate" class="autoUpdate">
+    			<option value="0">Seleziona un responsabile</option>
+    			<option th:each="responsabile : ${responsabili}"
+    					th:value="${responsabile.matricola}" 
+    					th:text="|${responsabile.nome} ${responsabile.cognome}|">
+    			</option>
+				</select>
+				</div>
+				<div class="form">
+				<span>Immagine nuova:</span>
+				<span><input type="file" name="img" accept="image/png, image/jpeg" /></span>
+			    </div>
+			    	<div class="form">
+				<span>Immagine nuova Top:</span>
+				<span><input type="file" name="imgTop" accept="image/png, image/jpeg" /></span>
+			    </div>
+				<div class="form">
+				<span><button type="submit">Invio</button></span>
+</div>
+</form>
+<div class="parallax"></div>
+</body>
+</html>

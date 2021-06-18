@@ -145,7 +145,7 @@ public class AnimaleController {
     @RequestMapping(value = "/animale", method = RequestMethod.POST)
     public String newOpera(@Valid @ModelAttribute("animale") Animale animale, 
     									Model model, BindingResult bindingResult,
-    									@RequestParam(value = "areaSelezionato") Long areaID,
+    									@RequestParam(value = "areaSelezionata") Long areaID,
     									@RequestParam(value="img", required=false)  MultipartFile immagine) throws IOException {
     	
     	this.animaleValidator.validate(animale, bindingResult);

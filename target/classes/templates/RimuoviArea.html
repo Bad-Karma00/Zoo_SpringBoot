@@ -1,0 +1,32 @@
+<meta name="robots" content="noindex">
+<html xmlns:th="http://www.thymeleaf.org">
+<head  th:replace="fragments/baseForm.html :: headerfiles(title=#{pageTitle.responsabileRimuovi})"> </head>
+<body>
+  
+  <header th:replace="fragments/baseForm.html :: intestazione"></header>
+  <div class="parallax">	
+	<div>
+		<div class="Titolo">Seleziona l'area da rimuovere</div>
+	</div>
+	<form th:action="@{/rimozioneArea}" method="POST" th:object="${area}">
+		<div class="form">
+			<span>Area:</span>
+			<select  name="areaSelezionata" id="autoUpdate" class="autoUpdate">
+    		<option value="0">Seleziona un'area:</option>
+    		<option th:each="area : ${aree}"
+    				th:value="${area.id}" 
+    				th:text="${area.nome}">
+    		</option>
+			</select>
+			<div class="form">
+			<span><button type="submit">Invio</button></span>
+			</div>
+		 </div>				
+		</form>
+			<div>
+				
+			</div>
+		</div>
+   <div class="parallax"></div>
+</body>
+</html>
