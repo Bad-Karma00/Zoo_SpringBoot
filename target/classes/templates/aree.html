@@ -1,0 +1,20 @@
+<meta name="robots" content="noindex">
+<html xmlns:th="http://www.thymeleaf.org">
+<head  th:replace="fragments/baseLista.html :: headerfiles(title=#{pageTitle.responsabiliLista})"> </head>
+<body>
+
+<header th:replace="fragments/baseLista.html :: intestazione"></header>
+  	
+  	<div class="parallax">
+	<div class="titolo">Lista delle Aree</div>
+    	<div class="lista">
+    	<ul>
+			<li th:each="area : ${aree}">
+				 <span th:text="|${area.nome} ${area?.habitat?.nome}|"/></span>	
+				 </li>
+		</ul>
+		</div>
+	</div>
+	<div class="parallax">	</div>
+</body>
+</html>

@@ -1,16 +1,12 @@
-<!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
-<head th:fragment="headerfiles(title)">
-	<meta charset="UTF-8" />
-	<link th:href="@{/css/cssForm.css}" rel="stylesheet">
-	<title th:text="${title}"></title>
+	<link th:href="@{/css/cssHGenerale.css}" rel="stylesheet">
+<head>
 </head>
 <body>
-	<header th:fragment="intestazione">
-<div class="pag1">
+  <div class="pag1"  th:style="'background-image:url(' + ${immagineT} + ');'">
 	<div class="banner">
 	<img src="https://image.freepik.com/free-vector/monkey-logo-design-vector-illustration_104950-126.jpg" id="logo">
-	  <ul class="navigation-bar">
+ <ul class="navigation-bar">
 		<li><a href="/">Home</a></li>
 		<li><a href=/informazioni>Info</a></li>
 		<li class="dropdown1">
@@ -41,7 +37,7 @@
 				</div>
 		</li>
 		<li class="dropdown1">
-			<a href="/habitatGenerale" class="dropbtn1">Habitat</a>
+			<a href="/habitat" class="dropbtn1">Habitat</a>
 				<div class="dropdown-content1">
 				<a href="Habitat_Marino.html">Marino</a>
 				<a href="Habitat_Savana.html">Savana</a>
@@ -54,11 +50,31 @@
 	  <br>
 	  <br>
 	
-		<h1>BENVENUTI ALLO ZOO</h1>
-		<p>Scopri le monki funny</p>
+	     <h1>HABITAT <class="Testo" th:text="*{habitat.nome}"></h1>
+		<p th:text="*{habitat.descrizione}"></p>
+      <br>
+      <br>
+     <P>Responsabile:<class="Testo" th:text="|${habitat?.responsabile?.nome} ${habitat?.responsabile?.cognome}|"></p>
 		
 	<div class="spacer"></div>
 </div>
-</header>
+<div class="middle">
+		 <h1>HABITAT <class="Testo" th:text="*{habitat.nome}"></h1>
+</div>
+<div class="spacer2"></div>
+<div class="parallax" th:style="'background-image:url(' + ${immagine} + ');'">
+  <div class="ImgR">
+  	<div class="ImgC">Lista delle Aree</div>
+    	<div class="Img1">
+    	<ul>
+			<li th:each="area : ${aree}">
+			<img th:src="@{${area.photosAnimale}}">
+			<div class="overLay"></div>
+				<a th:href="@{'/area' + '/' + ${area.id}}"  th:text="|${area.nome} ${area?.habitat?.nome}|"/></a>	
+				 </li>
+		</ul>
+		</div>
+		</div>
+   <div class="parallax" th:style="'background-image:url(' + ${immagine} + ');'" ></div>
 </body>
 </html>

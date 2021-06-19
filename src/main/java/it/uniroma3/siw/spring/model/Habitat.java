@@ -105,7 +105,7 @@ import javax.persistence.*;
 	 
 	 @Transient
 	    public String getPhotosImagePathTop() {
-	        if (immagine == null || id == null) return null;
+	        if (immagineTop == null || id == null) return null;
 	         
 	        return "/photos/" + id + nome + "/" + immagineTop;
 	    }

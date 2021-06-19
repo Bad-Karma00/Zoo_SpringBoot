@@ -24,10 +24,9 @@ import org.springframework.format.annotation.DateTimeFormat;
 	
 	@Column (nullable = false)
 	private String cognome;
-
+   
 	@ManyToOne
 	private Credentials credentials;
-	
 	
 	public Visita() {
 		

@@ -1,0 +1,52 @@
+<meta name="robots" content="noindex">
+<html xmlns:th="http://www.thymeleaf.org">
+<head  th:replace="fragments/baseForm.html :: headerfiles(title=#{pageTitle.animaleInserisci})"> </head>
+<body>
+  
+  <header th:replace="fragments/baseForm.html :: intestazione"></header>
+  <div class="parallax">	
+	<div>
+		<div class="Titolo">Inserisci i dati di un Animale</div>
+	</div>
+	<form th:action="@{/animale}" method="POST" th:object="${animale}" enctype ="multipart/form-data">
+		<div th:if="${#fields.hasGlobalErrors()}">
+  			<p th:each="err : ${#fields.globalErrors()}" th:text="${err}">...</p>
+		</div>
+		<div>
+			<div class="form">
+				<span>Nome:</span>
+				<span><input type="text" th:field="*{nome}" /></span>
+				<span th:if="${#fields.hasErrors('nome')}" th:errors="*{nome}"></span>
+			</div>	
+			<div class="form">
+				<span>Classe:</span>
+				<span><input type="text" th:field="*{classe}" /></span>
+				<span th:if="${#fields.hasErrors('classe')}" th:errors="*{classe}"></span>
+			</div>		
+			<div class="form">
+				<span>Ordine:</span>
+				<span><input type="text" th:field="*{ordine}" /></span>
+				<span th:if="${#fields.hasErrors('ordine')}" th:errors="*{ordine}"></span>
+			</div>
+				<div class="form">
+				<span>Immagine:</span>
+				<span><input type="file" name="img" accept="image/png, image/jpeg" /></span>
+			</div>
+			<div class="form">
+				<span>Area:</span>
+				<select name="areaSelezionata" id="autoUpdate" class="autoUpdate">
+    			<option value="0">Seleziona un'area</option>
+    			<option th:each="area : ${aree}"
+    					th:value="${area.id}" 
+    					th:text="|${area.nome}|">
+    			</option>
+				</select>
+			</div>
+			</form>
+			<div class="form">
+				<span><button type="submit">Invio</button></span>
+			</div>
+			</div>
+   <div class="parallax"></div>
+</body>
+</html>
