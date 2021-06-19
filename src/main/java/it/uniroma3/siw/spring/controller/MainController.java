@@ -10,16 +10,21 @@ import it.uniroma3.siw.spring.model.Visita;
 @Controller
 public class MainController {
 
-	@RequestMapping("/informazioni")
-	public String mostraInfo(Model model){
-		return "informazioni.html";
-	}
-	
-	@RequestMapping(value = "/prenota", method = RequestMethod.GET)
-	public String mostraPrenota(Model model){
-		model.addAttribute("visita", new Visita());
-		return "prenota.html";
-	}
-	
-	
+    @RequestMapping(value = {"/", "index"}, method = RequestMethod.GET)
+    public String index(Model model) {
+        return "index.html";
+    }
+
+    @RequestMapping("/informazioni")
+    public String mostraInfo(Model model){
+        return "informazioni.html";
+    }
+
+    @RequestMapping(value = "/prenota", method = RequestMethod.GET)
+    public String mostraPrenota(Model model){
+        model.addAttribute("visita", new Visita());
+        return "prenota.html";
+    }
+
+
 }

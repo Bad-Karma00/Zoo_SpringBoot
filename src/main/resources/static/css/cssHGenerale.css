@@ -26,6 +26,12 @@ body{
   text-transform: uppercase;
 }
 
+.dropbtn1{
+ color: yellow;
+  text-decoration: none;
+  text-transform: uppercase;
+}
+
 .navigation-bar li:hover a {
   color: #d94f5c;
 }
@@ -106,13 +112,6 @@ li.dropdown1 {
 	width: 9%;
 }
 
-.ImgC{
-	font-size:40px;
-	font-style:italic;
-	color:yellow;
-	
-}
-
 
 .parallax {
   background-image: url("https://i.pinimg.com/originals/55/10/54/551054340cdd3a9ef4452ec51b513085.jpg");
@@ -146,9 +145,11 @@ li.dropdown1 {
 
 .InformazioniR{
 	display:flex;
-	justify-content: left;
+  align-items: center;
+  justify-content: center;
 	flex-wrap: wrap;
-	background-color:cyan;
+	color:white;
+	background-image:url(https://www.wallpapertip.com/wmimgs/89-891902_savannah-hd-background.jpg);
 }
 
 .InformazioniC1{
@@ -157,58 +158,45 @@ li.dropdown1 {
 }
 
 .InformazioniC1 img {
-  width: 100%;
   object-fit:cover;
+    max-width:400px;
 }
 
-.InformazioniC2-2{
+.InformazioniC2{
   flex: 35%; /*Cambia quanta % l'oggetto si prende all'interno della flexbox*/
   max-width: 100%;
   padding: 0 10px;
 }
 
-.InformazioniR2{
-	display:flex;
-	justify-content: right;
-	flex-wrap: wrap;
-	background-color:pink;
+.InfoContainer{
+	padding-top:15px;
 }
 
-.InformazioniC1-2{
-  flex: 15%; /*Cambia quanta % l'oggetto si prende all'interno della flexbox*/
-  max-width: 50%;
+.subTitolo{
+	font-size:25px;
+	color:yellow;
+	font-family:italic;
+}
+.Testo{
+	font-size:20px;
 }
 
-.InformazioniC1-2 img {
-  width: 100%;
-  object-fit:cover;
-  
+ul{
+	 list-style-type: none;
 }
 
-.InformazioniC2-3{
-  flex: 35%; /*Cambia quanta % l'oggetto si prende all'interno della flexbox*/
-  max-width: 100%;
-  padding: 0 10px;
+.InformazioniR a {
+	display: inline-block;
+    color: white;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+    font-size:20px;
+    font-style:italic;
 }
 
-.InformazioniR3{
-	display:flex;
-	justify-content: right;
-	flex-wrap: wrap;
-	background-color:green;
-}
 
-.InformazioniC1-3{
-  flex: 15%; /*Cambia quanta % l'oggetto si prende all'interno della flexbox*/
-  max-width: 50%;
-}
-
-.InformazioniC1-3 img {
-  width: 100%;
-  object-fit:cover;
-  
-}
-
-a {
-	color: black;
-}
+ .InformazioniR a:hover{
+	  background-color: yellow;
+	}
+	

@@ -13,4 +13,6 @@ public interface AreaRepository extends CrudRepository<Area,Long> {
 	public List<Area> findByNomeAndHabitat(String nome, Habitat habitat);
 
 	public List<Area> findByNomeOrHabitat(String nome,Habitat habitat);
+	
+	public List<Area> findByHabitat(Habitat habitat);
 }

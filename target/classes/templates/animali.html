@@ -7,6 +7,7 @@
   	
   	<div class="parallax">
 	<div class="titolo">Lista degli Animali</div>
+	<div class="ImgR">
     	<div class="lista">
     	<ul>
 			<li th:each="animale : ${animali}">
@@ -14,6 +15,7 @@
 				 <div class="ImgC"><img th:src="@{${animale.photosImagePath}}"></div>
 		</ul>
 		</div>
+	</div>
 	</div>
 	<div class="parallax">	</div>
 </body>

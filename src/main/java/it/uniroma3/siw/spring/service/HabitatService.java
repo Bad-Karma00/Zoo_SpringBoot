@@ -33,6 +33,11 @@ public class HabitatService {
 	public List<Habitat> habitatPerNomeAndResponsabile(String nome, Responsabile responsabile) {
 		return habitatRepository.findByNomeAndResponsabile(nome, responsabile);
 	}
+	
+	@Transactional
+	public List<Habitat> habitatPerResponsabile(Responsabile responsabile) {
+		return habitatRepository.findByResponsabile(responsabile);
+	}
 
 	@Transactional
 	public List<Habitat> tutti() {
