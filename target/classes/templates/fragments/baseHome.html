@@ -1,5 +1,6 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org"
+  xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
 <head th:fragment="headerfiles(title)">
 	<meta charset="UTF-8" />
 	<link th:href="@{/css/cssHome.css}" rel="stylesheet">
@@ -11,7 +12,7 @@
 	<div class="banner">
 	<img src="https://image.freepik.com/free-vector/monkey-logo-design-vector-illustration_104950-126.jpg" id="logo">
 	  <ul class="navigation-bar">
-		<li><a href="/">Home</a></li>
+		<li><a href="/index">Home</a></li>
 		<li><a href=/informazioni>Info</a></li>
 		<li class="dropdown1">
 		<div class="dropbtn1">Biglietti</div>
@@ -20,6 +21,7 @@
 	    <a href=/rimVisita>Annulla Prenotazione</a>
 		</div>
 		</li>
+		<div sec:authorize="hasAuthority('ADMIN')" >
 		<li class="dropdown1">
 		<div class="dropbtn1">Operazioni</div>
 		<div class="dropdown-content1">
@@ -37,9 +39,11 @@
 				<a href="Habitat_Foresta.html">Lista Aree</a>
 				<a href="Habitat_Foresta.html">Lista Visite</a>
 				<a href="/responsabile">Lista Responsabili</a>
-			   <a href="/animale">Lista Animali</a>
-				</div>
-		</li>
+			    <a href="/animale">Lista Animali</a>
+			    <a href="/registerAdmin">Registra un nuovo Admin</a>
+			</div>
+		</li>		
+		</div>
 		<li class="dropdown1">
 			<a href="/habitatGenerale" class="dropbtn1">Habitat</a>
 				<div class="dropdown-content1">
@@ -47,7 +51,27 @@
 				<a href="Habitat_Savana.html">Savana</a>
 				<a href="Habitat_Foresta.html">Foresta</a>
 				</div>
-		</li>		
+		</li>
+		<div  sec:authorize="!isAuthenticated()">
+ 		<li>
+  		<a href="/login">Login</a>
+  		</li>
+  		</div>
+  		<div  sec:authorize="isAuthenticated()">
+  		<li>
+  		<a href="/logout">Logout</a>
+  		</li>
+  		</div>
+  		<div  sec:authorize="hasAuthority('USER')">
+  		<li>
+  		<a href="/area">Area Personale</a>
+  		</li>
+  		</div>
+  		<div  sec:authorize="!isAuthenticated()">
+  		<li>
+  		<a href="/registerUser">Registrati</a>
+  		</li>
+  		</div>		
 	  </ul>
 	  </div>
 	  <br>
@@ -56,7 +80,12 @@
 	
 		<h1>BENVENUTI ALLO ZOO</h1>
 		<p>Scopri le monki funny</p>
-		
+		<div sec:authorize="hasAuthority('ADMIN')" > Has Authority ADMIN </div> 
+		<div sec:authorize="hasAuthority('USER')" > Has Authority USER </div> 
+		<div sec:authorize="hasRole('ROLE_ADMIN')">Has Role ROLE_ADMIN</div>
+		<div sec:authorize="hasRole('ROLE_USER')">Has Role ROLE_USER</div>
+		<div sec:authorize="hasRole('ADMIN')">Has Role ADMIN</div>
+		<div sec:authorize="hasRole('USER')">Has Role USER</div>
 	<div class="spacer"></div>
 </div>
 </header>

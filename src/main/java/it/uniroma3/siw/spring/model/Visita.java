@@ -24,8 +24,10 @@ import org.springframework.format.annotation.DateTimeFormat;
 	
 	@Column (nullable = false)
 	private String cognome;
-	
 
+	@ManyToOne
+	private Credentials credentials;
+	
 	
 	public Visita() {
 		
@@ -79,7 +81,21 @@ import org.springframework.format.annotation.DateTimeFormat;
 		this.cognome = cognome;
 	}
 	
+
 	
+	
+	public Credentials getCredentials() {
+		return credentials;
+	}
+
+
+
+	public void setCredentials(Credentials credentials) {
+		this.credentials = credentials;
+	}
+
+
+
 	public int compareTo(Visita visita){
 		int result;
 		result = this.getNome().compareTo(visita.getNome());

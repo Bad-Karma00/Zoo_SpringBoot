@@ -1,6 +1,8 @@
 package it.uniroma3.siw.spring.service;
 
+
 import java.util.List;
+
 import java.util.Optional;
 
 import javax.transaction.Transactional;
@@ -8,8 +10,6 @@ import javax.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import it.uniroma3.siw.spring.model.Habitat;
-import it.uniroma3.siw.spring.model.Responsabile;
 import it.uniroma3.siw.spring.model.Visita;
 import it.uniroma3.siw.spring.repository.VisitaRepository;
 
@@ -18,7 +18,6 @@ public class VisitaService {
 
 	@Autowired
 	private VisitaRepository visitaRepository; 
-	
 	
 	@Transactional
 	public Visita inserisci(Visita visita) {
@@ -34,7 +33,8 @@ public class VisitaService {
 	public List<Visita> tutte() {
 		return (List<Visita>) visitaRepository.findAll();
 	}
-
+	
+	
 	@Transactional
 	public Visita visitaPerId(Long id) {
 		Optional<Visita> optional = visitaRepository.findById(id);
