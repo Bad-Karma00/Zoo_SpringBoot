@@ -145,7 +145,7 @@ public class HabitatController {
     	model.addAttribute("habitat", habitat);
     	model.addAttribute("immagineT",habitat.getPhotosImagePathTop());
     	model.addAttribute("immagine",habitat.getPhotosImagePath());
-    	model.addAttribute("aree",this.areaService.tutte());
+    	model.addAttribute("aree",this.areaService.areaHabitat(habitat));
     	return "habitat.html";
     }
 

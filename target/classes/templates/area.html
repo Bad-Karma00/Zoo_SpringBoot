@@ -1,9 +1,9 @@
 <html xmlns:th="http://www.thymeleaf.org">
-	<link th:href="@{/css/cssHabitat.css}" rel="stylesheet">
+	<link th:href="@{/css/cssArea.css}" rel="stylesheet">
 <head>
 </head>
 <body>
-  <div class="pag1"  th:style="'background-image:url(' + ${immagineT} + ');'">
+  <div class="pag1"  th:style="'background-image:url(' + ${immagine} + ');'">
 	<div class="banner">
 	<img src="https://image.freepik.com/free-vector/monkey-logo-design-vector-illustration_104950-126.jpg" id="logo">
  <ul class="navigation-bar">
@@ -50,30 +50,43 @@
 	  <br>
 	  <br>
 	
-	     <h1>HABITAT <class="Testo" th:text="*{habitat.nome}"></h1>
-		 <div>DIMENSIONE(mq) <class="Testo" th:text="*{habitat.dimensione}"></div>
+	     <h1>AREA <class="Testo" th:text="*{area.nome}"></h1>
+		 <div>ORARIO CHIUSURA <class="Testo" th:text="*{area.orario}"></div>
       <br>
       <br>
-     <P>Responsabile:<class="Testo" th:text="|${habitat?.responsabile?.nome} ${habitat?.responsabile?.cognome}|"></p>
+     <P>Habitat <class="Testo" th:text="|${area?.habitat?.nome}|"></p>
 		
 	<div class="spacer"></div>
 </div>
 <div class="middle">
-		 <h1>HABITAT <class="Testo" th:text="*{habitat.nome}"></h1>
-		 <p th:text="*{habitat.descrizione}"></p>
+		 <h1>AREA <class="Testo" th:text="*{area.nome}"></h1>
+		 <p th:text="*{area.descrizione}"></p>
 </div>
-<div class="parallax" th:style="'background-image:url(' + ${habitat.photosImagePath} + ');'">
-  	<div class="subTitolo">Lista delle Aree</div>
-    	<div class="ImgR">
-    	<ul>
-			<li th:each="area : ${aree}">
-			<div class="ImgC"><img th:src="@{${area.photosAnimale}}"></div>
-			<div class="overLay"></div>
-				<a th:href="@{'/area' + '/' + ${area.id}}"  th:text="|${area.nome} ${area?.orario}|"/></a>	
-				 </li>
-		</ul>
+<div class="parallax" th:style="'background-image:url(' + ${immagine} + ');'">
+<div class="ImgT">
+<div class="lista">
+			<div th:each="animale : ${animali}">
+				    <div class="ImgC"><img th:src="@{${animale.photosImagePath}}"></div>
+				   </div>
+		</div>
+</div>
+
+  <div class="ImgR">
+  	<div class="subTitolo">Lista animali presenti</div>
+    	<table class="center">
+  <tr>
+  <th>Nome</th>
+  <th>Ordine</th>
+  <th>Classe</th>
+  </tr>
+  <tr th:each="animale : ${animali}">
+  <td th:text="${animale.nome}"></td>
+  <td th:text="${animale.ordine}"></td>
+  <td th:text="${animale.classe}"></td>
+  </tr>
+</table>
 		</div>
 		</div>
-   <div class="parallax" th:style="'background-image:url(' + ${habitat.photosImagePath} + ');'" ></div>
+   <div class="parallax" th:style="'background-image:url(' + ${immagine} + ');'" ></div>
 </body>
 </html>

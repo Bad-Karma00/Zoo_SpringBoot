@@ -31,6 +31,11 @@ public class AreaService {
 	public List<Area> areaPerNomeAndHabitat(String nome, Habitat habitat) {
 		return areaRepository.findByNomeAndHabitat(nome, habitat);
 	}
+	
+	@Transactional
+	public List<Area> areaHabitat(Habitat habitat) {
+		return areaRepository.findByHabitat(habitat);
+	}
 
 	@Transactional
 	public List<Area> tutte() {

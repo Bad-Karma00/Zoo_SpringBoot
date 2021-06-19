@@ -1,6 +1,6 @@
 <meta name="robots" content="noindex">
 <html xmlns:th="http://www.thymeleaf.org">
-<head  th:replace="fragments/baseLista.html :: headerfiles(title=#{pageTitle.responsabiliLista})"> </head>
+<head  th:replace="fragments/baseLista.html :: headerfiles(title=#{pageTitle.areeLista})"> </head>
 <body>
 
 <header th:replace="fragments/baseLista.html :: intestazione"></header>
@@ -10,8 +10,7 @@
     	<div class="lista">
     	<ul>
 			<li th:each="area : ${aree}">
-				 <span th:text="|${area.nome} ${area?.habitat?.nome}|"/></span>	
-				 </li>
+				 <a th:href="@{'/area' + '/' + ${area.id}}" th:text="|${area.nome} ${area?.habitat?.nome}|"/></a>
 		</ul>
 		</div>
 	</div>

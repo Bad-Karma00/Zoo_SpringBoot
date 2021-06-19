@@ -1,5 +1,5 @@
 <html xmlns:th="http://www.thymeleaf.org">
-	<link th:href="@{/css/cssHGenerale.css}" rel="stylesheet">
+	<link th:href="@{/css/cssHabitat.css}" rel="stylesheet">
 <head>
 </head>
 <body>
@@ -51,7 +51,7 @@
 	  <br>
 	
 	     <h1>HABITAT <class="Testo" th:text="*{habitat.nome}"></h1>
-		<p th:text="*{habitat.descrizione}"></p>
+		 <div>DIMENSIONE(mq) <class="Testo" th:text="*{habitat.dimensione}"></div>
       <br>
       <br>
      <P>Responsabile:<class="Testo" th:text="|${habitat?.responsabile?.nome} ${habitat?.responsabile?.cognome}|"></p>
@@ -60,21 +60,20 @@
 </div>
 <div class="middle">
 		 <h1>HABITAT <class="Testo" th:text="*{habitat.nome}"></h1>
+		 <p th:text="*{habitat.descrizione}"></p>
 </div>
-<div class="spacer2"></div>
-<div class="parallax" th:style="'background-image:url(' + ${immagine} + ');'">
-  <div class="ImgR">
-  	<div class="ImgC">Lista delle Aree</div>
-    	<div class="Img1">
+<div class="parallax" th:style="'background-image:url(' + ${habitat.photosImagePath} + ');'">
+  	<div class="subTitolo">Lista delle Aree</div>
+    	<div class="ImgR">
     	<ul>
 			<li th:each="area : ${aree}">
-			<img th:src="@{${area.photosAnimale}}">
+			<div class="ImgC"><img th:src="@{${area.photosAnimale}}"></div>
 			<div class="overLay"></div>
-				<a th:href="@{'/area' + '/' + ${area.id}}"  th:text="|${area.nome} ${area?.habitat?.nome}|"/></a>	
+				<a th:href="@{'/area' + '/' + ${area.id}}"  th:text="|${area.nome} ${area?.orario}|"/></a>	
 				 </li>
 		</ul>
 		</div>
 		</div>
-   <div class="parallax" th:style="'background-image:url(' + ${immagine} + ');'" ></div>
+   <div class="parallax" th:style="'background-image:url(' + ${habitat.photosImagePath} + ');'" ></div>
 </body>
 </html>

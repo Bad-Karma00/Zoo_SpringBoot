@@ -25,8 +25,8 @@ public class AnimaleService {
 	}
 	
 	@Transactional
-	public List<Animale> animalePerNomeAndArea(String nome, Area area) {
-		return animaleRepository.findByNomeAndArea(nome, area);
+	public List<Animale> animalePerArea(Area area) {
+		return animaleRepository.findByArea(area);
 	}
 
 	@Transactional

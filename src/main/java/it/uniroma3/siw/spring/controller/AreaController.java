@@ -13,6 +13,7 @@ import java.util.List;
 
 import javax.validation.Valid;
 
+import org.apache.tomcat.util.http.fileupload.FileUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -45,6 +46,9 @@ public class AreaController {
 	@Autowired
 	private AreaValidator areaValidator;
 	
+	@Autowired
+	private AnimaleService animaleService;
+	
     
     @RequestMapping(value="/addArea", method = RequestMethod.GET)
     public String addArea(Model model) {
@@ -67,12 +71,9 @@ public class AreaController {
     		List<Area> aree = (List<Area>) areaService.tutte();
     		Collections.sort(aree);
     		Area areaDaRim = areaService.areaPerId(areaID);
-    	   	String fileName = StringUtils.cleanPath(areaDaRim.getImmagine());
     	   	String uploadDir ="photos/"+ areaDaRim.getId()+areaDaRim.getNome();
     		Path uploadPath = Paths.get(uploadDir);
-    		 Path filePath = uploadPath.resolve(fileName);
-    		 Files.delete(filePath);
-    		 Files.delete(uploadPath);
+    		FileUtils.deleteDirectory(uploadPath.toFile());;
     		this.areaService.delete(areaDaRim);
     		model.addAttribute("aree", this.areaService.tutte());
     		return "aree.html";
@@ -96,17 +97,15 @@ public class AreaController {
     								 Model model, BindingResult bindingResult) throws IOException{
     	    
     		Area areaDaRim = areaService.areaPerId(areaID);
-	   	    String fileName1 = StringUtils.cleanPath(areaDaRim.getImmagine());
 	     	String uploadDir1 ="photos/"+ areaDaRim.getId()+areaDaRim.getNome();
 		    Path uploadPath1 = Paths.get(uploadDir1);
-		    Path filePath1 = uploadPath1.resolve(fileName1);
-		    Files.delete(filePath1);
-        	List<Area> aree = (List<Area>) areaService.tutte();
-        	Collections.sort(aree);
+		    FileUtils.deleteDirectory(uploadPath1.toFile());;
+        	List<Habitat> habitats = (List<Habitat>) habitatService.tutti();
+        	Collections.sort(habitats);
             Habitat habitatNuovo = habitatService.habitatPerId(habitatID);
         	String fileName = StringUtils.cleanPath(immagine.getOriginalFilename());
         	Area areaNuova = new Area();
-        	areaNuova.setId(habitatID);
+        	areaNuova.setId(areaID);
         	areaNuova.setNome(nomeNuovo);
         	areaNuova.setDescrizione(descrizioneNuova);
         	areaNuova.setOrario(orarioNuovo);
@@ -137,6 +136,8 @@ public class AreaController {
     public String getArea(@ModelAttribute("id") Long id, Model model) {
     	Area area=this.areaService.areaPerId(id);
     	model.addAttribute("area", area);
+    	model.addAttribute("immagine",area.getPhotosImagePath());
+    	model.addAttribute("animali",animaleService.animalePerArea(area));
     	return "area.html";
     }
 
