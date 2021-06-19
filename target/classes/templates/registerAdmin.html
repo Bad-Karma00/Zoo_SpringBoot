@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="fragments/baseForm.html :: headerfiles(title='Registra Utente')"> </head>
+<body>
+	<header th:replace="fragments/baseForm.html :: intestazione"></header>
+	<div class="parallax">
+	<div>
+    	<div class="titolo">Form di registrazione</div>
+    	</div>
+	<form th:action="@{/registraAdmin}" method="POST">
+        <div class="form">
+            <span>Username</span>
+            <span><input type="text" placeholder="username" required
+                       th:field="${credentials.username}"/></span>
+            <span th:if="${#fields.hasErrors('credentials.username')}"
+                th:errors="${credentials.username}" th:style="'color:red'"></span>
+        </div>
+        <div class="form">
+            <span>Password</span>
+            <span><input type="password" placeholder="password" required
+                       th:field="${credentials.password}"/></span>
+            <span th:if="${#fields.hasErrors('credentials.password')}"
+                th:errors="${credentials.password}" th:style="'color:red'"></span>
+        </div>
+        <div class="form">
+            <span>Nome</span>
+            <span><input type="text" placeholder="nome" required
+                       th:field="${user.nome}"/></span>
+            <span th:if="${#fields.hasErrors('user.nome')}"
+                th:errors="${user.nome}" th:style="'color:red'"></span>
+        </div>
+        <div class="form">
+            <span>Cognome</span>
+            <span><input type="text" placeholder="cognome" required
+                       th:field="${user.cognome}"/></span>
+            <span th:if="${#fields.hasErrors('user.cognome')}"
+                th:errors="${user.cognome}" th:style="'color:red'"></span>
+        </div>
+        <div class="form">
+            <span>
+                <button type="submit">Registra</button>
+            </span>
+        </div>
+	</form>
+	</div>
+    <div class="parallax"></div>
+</body>
+</html>
