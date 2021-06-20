@@ -3,12 +3,11 @@
   
 <header th:replace="fragments/basePrenota.html :: intestazione"></header>
 <body>
-	
 	<h2>Hai prenotato la visita! Stampa il biglietto:</h2>
 	<div th:if="${visita}" th:object="${visita}" class="container">
-	Nome:<span th:text="*{nome}">qui-va-nome</span><br>
-	Cognome:<span th:text="*{cognome}">qui-va-cognome</span><br>
-	Data:<span th:text="*{data}">qui-va-data</span><br>
-	
+	Nome: <span th:text="*{nome}">qui-va-nome</span><br>
+	Cognome: <span th:text="*{cognome}">qui-va-cognome</span><br>
+	Data: <span th:text="*{data}">qui-va-data</span><br>
+	</div>
 </body>
 </html>

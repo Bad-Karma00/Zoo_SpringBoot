@@ -3,7 +3,7 @@
   xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
 <head th:fragment="headerfiles(title)">
 	<meta charset="UTF-8" />
-	<link th:href="@{/css/cssHome.css}" rel="stylesheet">
+	<link th:href="@{/css/cssPersonale.css}" rel="stylesheet">
 	<title th:text="${title}"></title>
 </head>
 <body>
@@ -72,8 +72,8 @@
 	  <br>
 	  <br>
 	
-		<h1>BENVENUTI ALLO ZOO</h1>
-		<p>Scopri le monki funny</p>
+		<h1>AREA PERSONALE</h1>
+		<p>Controlla le tue prenotazioni</p>
 		<div sec:authorize="hasAuthority('ADMIN')" > Has Authority ADMIN </div> 
 		<div sec:authorize="hasAuthority('USER')" > Has Authority USER </div> 
 		<div sec:authorize="hasRole('ROLE_ADMIN')">Has Role ROLE_ADMIN</div>

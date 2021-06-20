@@ -18,10 +18,9 @@
 		<div class="dropbtn1">Biglietti</div>
 		<div class="dropdown-content1">
 		<a href=/prenota>Prenota</a>
-	    <a href=/rimVisita>Annulla Prenotazione</a>
 		</div>
 		</li>
-		<div sec:authorize="hasAuthority('ADMIN')" >
+		<div sec:authorize="hasAuthority('ADMIN')">
 		<li class="dropdown1">
 		<div class="dropbtn1">Operazioni</div>
 		<div class="dropdown-content1">
@@ -46,11 +45,6 @@
 		</div>
 		<li class="dropdown1">
 			<a href="/habitat" class="dropbtn1">Habitat</a>
-				<div class="dropdown-content1">
-				<a href="Habitat_Marino.html">Marino</a>
-				<a href="Habitat_Savana.html">Savana</a>
-				<a href="Habitat_Foresta.html">Foresta</a>
-				</div>
 		</li>
 		<div  sec:authorize="!isAuthenticated()">
  		<li>
@@ -64,7 +58,7 @@
   		</div>
   		<div  sec:authorize="hasAuthority('USER')">
   		<li>
-  		<a href="/area">Area Personale</a>
+  		<a href="/areaP">Area Personale</a>
   		</li>
   		</div>
   		<div  sec:authorize="!isAuthenticated()">

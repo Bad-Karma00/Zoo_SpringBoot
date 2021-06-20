@@ -63,14 +63,11 @@
 		 <p th:text="*{area.descrizione}"></p>
 </div>
 <div class="parallax" th:style="'background-image:url(' + ${immagine} + ');'">
-<div class="ImgT">
-<div class="lista">
-			<div th:each="animale : ${animali}">
-				    <div class="ImgC"><img th:src="@{${animale.photosImagePath}}"></div>
-				   </div>
+<div class="container">
+			<ul th:each="animale : ${animali}">
+				    <li class="ImgC"><img th:src="@{${animale.photosImagePath}}"></li>
+				   </ul>
 		</div>
-</div>
-
   <div class="ImgR">
   	<div class="subTitolo">Lista animali presenti</div>
     	<table class="center">
