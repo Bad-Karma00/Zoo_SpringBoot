@@ -7,6 +7,7 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.nio.file.StandardCopyOption;
 import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
 
 import javax.validation.Valid;
@@ -23,6 +24,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 
+import it.uniroma3.siw.spring.model.Responsabile;
 import it.uniroma3.siw.spring.model.Habitat;
 import it.uniroma3.siw.spring.model.Responsabile;
 import it.uniroma3.siw.spring.service.AreaService;
@@ -203,12 +205,42 @@ public class HabitatController {
         return "InserisciHabitat.html";
     }
 	
-	
-	
-	
-    @RequestMapping(value = "/habitatGenerale", method = RequestMethod.GET)
-    public String getHabitat(Model model) {
-    		model.addAttribute("habitat", this.habitatService.tutti());    		
-    		return "habitatGenerale.html";
+    @RequestMapping(value="/ordineAlfabeticoHabitat", method = RequestMethod.GET)
+    public String ordineAlfabeticoHabitat(Model model) {
+    		List<Habitat> habitatAlfabetico = this.habitatService.tutti();
+    		
+    		if (habitatAlfabetico.size() > 0) {
+    			  Collections.sort(habitatAlfabetico, new Comparator<Habitat>() {
+    			      @Override
+    			      public int compare(final Habitat habitat1, final Habitat habitat2) {
+    			          return habitat1.getNome().compareTo(habitat2.getNome());
+    			      }
+    			  });
+    			}
+    		model.addAttribute("habitats", habitatAlfabetico);
+    		
+        	return "habitats.html";
+    }
+    
+    @RequestMapping(value="/ordinePerResponsabile", method = RequestMethod.GET)
+    public String ordinePerResponsabile(Model model) {
+    		List<Habitat> responsabileHabitat = this.habitatService.tutti();
+    		
+    		if (responsabileHabitat.size() > 0) {
+    			  Collections.sort(responsabileHabitat, new Comparator<Habitat>() {
+    				  @Override
+    			      public int compare(final Habitat habitat1, final Habitat habitat2) {
+    					  int result;
+    			          result= habitat1.getResponsabile().getNome().compareTo(habitat2.getResponsabile().getNome());
+    			          if(result==0) {
+    			        	  result= habitat1.getResponsabile().getCognome().compareTo(habitat2.getResponsabile().getCognome());
+    			          }
+    			          return result;
+    			      }
+    			  });
+    			}
+    		model.addAttribute("habitats", responsabileHabitat);
+    		
+        	return "habitats.html";
     }
 }

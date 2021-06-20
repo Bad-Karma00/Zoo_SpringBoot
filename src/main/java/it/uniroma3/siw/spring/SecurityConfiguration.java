@@ -57,7 +57,7 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
     	
     	http
 		.authorizeRequests()
-		.antMatchers(HttpMethod.GET, "/login","/registraUser" ,"/registrationSuccessful","/registerUser","/","/index","/informazioni","/habitatGenerale","/habitatMarino","/habitatSavana","/habitatForesta","/Area_Elefanti","/Area_Giraffe","/Area_Leoni","/Area_PesciTropicali","/Area_Pinguini","/Area_Rettili","/areaScimmie","/areaSquali","/areaVolatili","/css/**","/img/**","/photos/**","/images/**").permitAll()
+		.antMatchers(HttpMethod.GET, "/login","/registraUser" ,"/registrationSuccessful","/registerUser","/","/index","/informazioni","/habitatGenerale","/habitatMarino","/habitatSavana","/habitatForesta","/Area_Elefanti","/Area_Giraffe","/Area_Leoni","/Area_PesciTropicali","/Area_Pinguini","/Area_Rettili","/areaScimmie","/areaSquali","/areaVolatili","/css/**","/img/**","/photos/**","/images/**","/habitat","/habitat/**","/area","/area/**").permitAll()
 		.antMatchers(HttpMethod.POST).permitAll()
 		.antMatchers(HttpMethod.GET, "/prenota.html","/prenota","/visitaConfermata").access("hasAuthority('USER')")
 		.antMatchers("/InserisciResponsabile", "/RimuoviResponsabile", "/responsabili","/registerAdmin").access("hasAuthority('ADMIN')")

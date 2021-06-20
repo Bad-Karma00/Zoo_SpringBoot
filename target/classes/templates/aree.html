@@ -9,6 +9,15 @@
 	<div class="titolo">Lista delle Aree</div>
     	<div class="lista">
     	<ul>
+  			<li class="dropdown1">
+     			<a href="" class="dropbtn1">Ordine</a>
+     				<div class="dropdown-content1">    
+      					<a href="/ordineAlfabeticoArea" th:style="'color: black;'">Alfabetico</a>
+      					<a href="/ordinePerHabitat" th:style="'color: black;'">Per Habitat</a>
+      			</div>
+      		</li>
+      	</ul>
+    	<ul>
 			<li th:each="area : ${aree}">
 				 <a th:href="@{'/area' + '/' + ${area.id}}" th:text="|${area.nome} ${area?.habitat?.nome}|"/></a>
 		</ul>
