@@ -1,12 +1,11 @@
 <html xmlns:th="http://www.thymeleaf.org">
-<head  th:replace="fragments/baseInfo.html :: headerfiles(title=#{pageTitle.Info})"> </head>
+<head  th:replace="fragments/basePersonale.html :: headerfiles(title=#{pageTitle.AreaPersonale})"> </head>
 <body>
   
-  <header th:replace="fragments/baseInfo.html :: intestazione"></header>
-
+  <header th:replace="fragments/basePersonale.html :: intestazione"></header>
+    		<div class="parallax">
     	<div class="Titolo">Lista delle prenotazioni</div>
-		
-<tr th:each="visita : ${visite}">                
+  <tr th:each="visita : ${visite}">                
     <td th:text="${visita?.nome}"></td>
     <td th:text="${visita?.cognome}"></td>
     <td th:text="${visita?.data}"></td>
@@ -17,7 +16,8 @@
 		</form>
     </td>
 </tr>
-	  
+</div>
+<div class="parallax"></div>
 </body>
 </html>
 

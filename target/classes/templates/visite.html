@@ -1,0 +1,19 @@
+<meta name="robots" content="noindex">
+<html xmlns:th="http://www.thymeleaf.org">
+<head  th:replace="fragments/baseLista.html :: headerfiles(title=#{pageTitle.responsabiliLista})"> </head>
+<body>
+
+<header th:replace="fragments/baseLista.html :: intestazione"></header>
+  	
+  	<div class="parallax">
+	<div class="titolo">Lista delle Visite</div>
+    	<div class="lista">
+    	<ul>
+			<li th:each="visita : ${visite}">
+				 <span th:text="|${visita.nome} ${visita.cognome} ${visita.data}|"/></span>
+		</ul>
+		</div>
+	</div>
+	<div class="parallax">	</div>
+</body>
+</html>

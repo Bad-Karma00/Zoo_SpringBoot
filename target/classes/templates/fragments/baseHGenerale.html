@@ -10,16 +10,16 @@
 <div class="pag1">
 	<div class="banner">
 	<img src="https://image.freepik.com/free-vector/monkey-logo-design-vector-illustration_104950-126.jpg" id="logo">
-	  <ul class="navigation-bar">
-		<li><a href="/">Home</a></li>
+<ul class="navigation-bar">
+		<li><a href="/index">Home</a></li>
 		<li><a href=/informazioni>Info</a></li>
 		<li class="dropdown1">
 		<div class="dropbtn1">Biglietti</div>
 		<div class="dropdown-content1">
 		<a href=/prenota>Prenota</a>
-	    <a href=/rimVisita>Annulla Prenotazione</a>
 		</div>
 		</li>
+		<div sec:authorize="hasAuthority('ADMIN')">
 		<li class="dropdown1">
 		<div class="dropbtn1">Operazioni</div>
 		<div class="dropdown-content1">
@@ -37,12 +37,34 @@
 				<a href="/area">Lista Aree</a>
 				<a href="/visita">Lista Visite</a>
 				<a href="/responsabile">Lista Responsabili</a>
-			   <a href="/animale">Lista Animali</a>
-				</div>
-		</li>
+			    <a href="/animale">Lista Animali</a>
+			    <a href="/registerAdmin">Registra un nuovo Admin</a>
+			</div>
+		</li>		
+		</div>
 		<li class="dropdown1">
 			<a href="/habitat" class="dropbtn1">Habitat</a>
-		</li>		
+		</li>
+		<div  sec:authorize="!isAuthenticated()">
+ 		<li>
+  		<a href="/login">Login</a>
+  		</li>
+  		</div>
+  		<div  sec:authorize="isAuthenticated()">
+  		<li>
+  		<a href="/logout">Logout</a>
+  		</li>
+  		</div>
+  		<div  sec:authorize="hasAuthority('USER')">
+  		<li>
+  		<a href="/areaP">Area Personale</a>
+  		</li>
+  		</div>
+  		<div  sec:authorize="!isAuthenticated()">
+  		<li>
+  		<a href="/registerUser">Registrati</a>
+  		</li>
+  		</div>		
 	  </ul>
 	  </div>
 	  <br>
@@ -51,7 +73,12 @@
 	
 			<h1>HABITAT</h1>
 		<p>Vieni a scoprire i nostri habitat, pensati apposta per ogni specie </p>
-		
+		<div sec:authorize="hasAuthority('ADMIN')" > Has Authority ADMIN </div> 
+		<div sec:authorize="hasAuthority('USER')" > Has Authority USER </div> 
+		<div sec:authorize="hasRole('ROLE_ADMIN')">Has Role ROLE_ADMIN</div>
+		<div sec:authorize="hasRole('ROLE_USER')">Has Role ROLE_USER</div>
+		<div sec:authorize="hasRole('ADMIN')">Has Role ADMIN</div>
+		<div sec:authorize="hasRole('USER')">Has Role USER</div>
 	<div class="spacer"></div>
 </div>
 </header>

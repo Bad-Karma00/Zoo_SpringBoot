@@ -75,6 +75,12 @@ public class VisitaController {
 			return "areaPersonale.html";
 		
 	}
+	
+	 @RequestMapping(value = "/visita", method = RequestMethod.GET)
+	    public String getVisite(Model model) {
+	    		model.addAttribute("visite", this.visitaService.tutte());
+	    		return "visite.html";
+	    }
     
     
     @RequestMapping(value = "/addVisita", method = RequestMethod.POST)

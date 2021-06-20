@@ -51,8 +51,8 @@ public class MainController {
 		return "prenota.html";
 	}
 	
-	@RequestMapping(value = "/area", method = RequestMethod.GET)
-	public String mostraArea(Model model, Authentication auth){
+	@RequestMapping(value = "/areaP", method = RequestMethod.GET)
+	public String mostraAreaP(Model model, Authentication auth){
 		String username = auth.getName();
 		logger.debug("Username utente:" + username); 
 		
