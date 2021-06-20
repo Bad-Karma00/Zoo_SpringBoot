@@ -15,7 +15,9 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 import it.uniroma3.siw.spring.model.Credentials;
 import it.uniroma3.siw.spring.model.Visita;
+import it.uniroma3.siw.spring.repository.AnimaleRepository;
 import it.uniroma3.siw.spring.repository.VisitaRepository;
+import it.uniroma3.siw.spring.service.AnimaleService;
 import it.uniroma3.siw.spring.service.CredentialsService;
 import it.uniroma3.siw.spring.service.VisitaService;
 
@@ -31,13 +33,35 @@ public class MainController {
 	@Autowired
 	private VisitaService visitaService;
 	
+	@Autowired
+	private AnimaleRepository animaleRepository;
+	
+	@Autowired
+	private AnimaleService animaleService;
 	
 	
 	private final Logger logger = LoggerFactory.getLogger(this.getClass());
 	
 	@RequestMapping(value = {"/", "index"}, method = RequestMethod.GET)
 	public String index(Model model) {
-		return "index.html";
+		int nAnimali = animaleRepository.contaAnimali();
+		logger.debug("Animali contati: " + nAnimali);
+		
+		
+		Long randID1 = 1 + (long) (Math.random() * (nAnimali - 0));
+		logger.debug("Primo ID random: " + randID1);
+		Long randID2 = 1 + (long) (Math.random() * (nAnimali - 0));
+		logger.debug("Secondo ID random: " + randID2);
+		Long randID3 = 1 + (long) (Math.random() * (nAnimali - 0));
+		logger.debug("Terzo ID random: " + randID3);
+		
+		model.addAttribute("animale1", animaleService.animalePerId(randID1));
+		
+		model.addAttribute("animale2", animaleService.animalePerId(randID2));
+		
+		model.addAttribute("animale3", animaleService.animalePerId(randID3));
+		
+		return "index";
 	}
 
 	@RequestMapping("/informazioni")
