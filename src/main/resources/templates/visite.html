@@ -9,6 +9,15 @@
 	<div class="titolo">Lista delle Visite</div>
     	<div class="lista">
     	<ul>
+  			<li class="dropdown1">
+     			<a href="" class="dropbtn1">Ordine</a>
+     				<div class="dropdown-content1">    
+      					<a href="/ordineAlfabeticoVisita" th:style="'color: black;'">Alfabetico</a>
+      					<a href="/ordinePerData" th:style="'color: black;'">Per Data</a>
+      			</div>
+      		</li>
+      	</ul>
+    	<ul>
 			<li th:each="visita : ${visite}">
 				 <span th:text="|${visita.nome} ${visita.cognome} ${visita.data}|"/></span>
 		</ul>

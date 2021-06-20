@@ -13,12 +13,14 @@
 <ul class="navigation-bar">
 		<li><a href="/index">Home</a></li>
 		<li><a href=/informazioni>Info</a></li>
+	<div sec:authorize="hasAuthority('USER')">
 		<li class="dropdown1">
 		<div class="dropbtn1">Biglietti</div>
 		<div class="dropdown-content1">
 		<a href=/prenota>Prenota</a>
 		</div>
 		</li>
+		</div>
 		<div sec:authorize="hasAuthority('ADMIN')">
 		<li class="dropdown1">
 		<div class="dropbtn1">Operazioni</div>

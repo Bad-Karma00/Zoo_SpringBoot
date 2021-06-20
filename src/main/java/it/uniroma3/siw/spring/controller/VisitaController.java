@@ -1,7 +1,8 @@
 package it.uniroma3.siw.spring.controller;
 
 import java.util.ArrayList;
-
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
 
 import javax.validation.Valid;
@@ -102,5 +103,43 @@ public class VisitaController {
             return "VisitaConfermata.html";
         }
         return "prenota.html";
+    }
+    
+    @RequestMapping(value="/ordineAlfabeticoVisita", method = RequestMethod.GET)
+    public String ordineAlfabetico(Model model) {
+    		List<Visita> visitaAlfabetico = this.visitaService.tutte();
+    		
+    		if (visitaAlfabetico.size() > 0) {
+    			  Collections.sort(visitaAlfabetico, new Comparator<Visita>() {
+    				  @Override
+    			      public int compare(final Visita visita1, final Visita visita2) {
+    					  int result;
+    			          result= visita1.getNome().compareTo(visita2.getNome());
+    			          if(result==0) {
+    			        	  result= visita1.getCognome().compareTo(visita2.getCognome());
+    			          }
+    			          return result;
+    			      }    			  });
+    			}
+    		model.addAttribute("visite", visitaAlfabetico);
+    		
+        	return "visite.html";
+    }
+    
+    @RequestMapping(value="/ordinePerData", method = RequestMethod.GET)
+    public String ordinePerData(Model model) {
+       		List<Visita> visiteData = this.visitaService.tutte();
+    		
+    		if (visiteData.size() > 0) {
+    			  Collections.sort(visiteData, new Comparator<Visita>() {
+    			      @Override
+    			      public int compare(final Visita visita1, final Visita visita2) {
+    			          return visita1.getData().compareTo(visita2.getData());
+    			      }
+    			  });
+    			}
+    		model.addAttribute("visite", visiteData);
+    		
+        	return "visite.html";
     }
 }

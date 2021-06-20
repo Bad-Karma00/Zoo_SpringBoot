@@ -7,6 +7,7 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.nio.file.StandardCopyOption;
 import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
 
 import javax.validation.Valid;
@@ -177,5 +178,39 @@ public class AnimaleController {
             return "animali.html";
         }
         return "InserisciAnimale.html";
+    }
+    
+    @RequestMapping(value="/ordineAlfabetico", method = RequestMethod.GET)
+    public String ordineAlfabetico(Model model) {
+    		List<Animale> animaleAlfabetico = this.animaleService.tutti();
+    		
+    		if (animaleAlfabetico.size() > 0) {
+    			  Collections.sort(animaleAlfabetico, new Comparator<Animale>() {
+    			      @Override
+    			      public int compare(final Animale animale1, final Animale animale2) {
+    			          return animale1.getNome().compareTo(animale2.getNome());
+    			      }
+    			  });
+    			}
+    		model.addAttribute("animali", animaleAlfabetico);
+    		
+        	return "animali.html";
+    }
+    
+    @RequestMapping(value="/ordinePerArea", method = RequestMethod.GET)
+    public String ordinePerArea(Model model) {
+    		List<Animale> animaleArea = this.animaleService.tutti();
+    		
+    		if (animaleArea.size() > 0) {
+    			  Collections.sort(animaleArea, new Comparator<Animale>() {
+    			      @Override
+    			      public int compare(final Animale animale1, final Animale animale2) {
+    			          return animale1.getArea().getNome().compareTo(animale2.getArea().getNome());
+    			      }
+    			  });
+    			}
+    		model.addAttribute("animali", animaleArea);
+    		
+        	return "animali.html";
     }
 }

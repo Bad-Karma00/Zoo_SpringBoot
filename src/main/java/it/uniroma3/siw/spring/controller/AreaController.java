@@ -9,6 +9,7 @@ import java.nio.file.StandardCopyOption;
 import java.time.LocalDateTime;
 import java.time.LocalTime;
 import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
 
 import javax.validation.Valid;
@@ -182,5 +183,40 @@ public class AreaController {
             return "aree.html";
         }
         return "InserisciArea.html";
+    }
+    
+    
+    @RequestMapping(value="/ordineAlfabeticoArea", method = RequestMethod.GET)
+    public String ordineAlfabetico(Model model) {
+    		List<Area> areaAlfabetico = this.areaService.tutte();
+    		
+    		if (areaAlfabetico.size() > 0) {
+    			  Collections.sort(areaAlfabetico, new Comparator<Area>() {
+    			      @Override
+    			      public int compare(final Area area1, final Area area2) {
+    			          return area1.getNome().compareTo(area2.getNome());
+    			      }
+    			  });
+    			}
+    		model.addAttribute("aree", areaAlfabetico);
+    		
+        	return "aree.html";
+    }
+    
+    @RequestMapping(value="/ordinePerHabitat", method = RequestMethod.GET)
+    public String ordinePerHabitat(Model model) {
+    		List<Area> areaHabitat = this.areaService.tutte();
+    		
+    		if (areaHabitat.size() > 0) {
+    			  Collections.sort(areaHabitat, new Comparator<Area>() {
+    			      @Override
+    			      public int compare(final Area area1, final Area area2) {
+    			          return area1.getHabitat().getNome().compareTo(area2.getHabitat().getNome());
+    			      }
+    			  });
+    			}
+    		model.addAttribute("aree", areaHabitat);
+    		
+        	return "aree.html";
     }
 }

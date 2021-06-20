@@ -10,8 +10,17 @@
 	<div class="ImgR">
     	<div class="lista">
     	<ul>
+  			<li class="dropdown1">
+     			<a href="" class="dropbtn1">Ordine</a>
+     				<div class="dropdown-content1">    
+      					<a href="/ordineAlfabetico" th:style="'color: black;'">Alfabetico</a>
+      					<a href="/ordinePerArea" th:style="'color: black;'">Per Area</a>
+      			</div>
+      		</li>
+      	</ul>
+    	<ul>
 			<li th:each="animale : ${animali}">
-				 <span th:text="${animale.nome}"/></span>	
+				 <span th:text="|${animale.nome} ${animale?.area?.nome}|"></span>	
 				 <div class="ImgC"><img th:src="@{${animale.photosImagePath}}"></div>
 		</ul>
 		</div>
