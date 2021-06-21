@@ -177,6 +177,7 @@ public class AnimaleController {
            }      
             return "animali.html";
         }
+        model.addAttribute("aree",this.areaService.tutte());      
         return "InserisciAnimale.html";
     }
     

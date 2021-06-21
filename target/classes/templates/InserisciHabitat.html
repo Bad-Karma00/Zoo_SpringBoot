@@ -10,7 +10,7 @@
 	</div>
 	<form th:action="@{/habitat}" method="POST" th:object="${habitat}" enctype ="multipart/form-data">
 		<div th:if="${#fields.hasGlobalErrors()}">
-  			<p th:each="err : ${#fields.globalErrors()}" th:text="${err}">...</p>
+  			<p class="errore" th:each="err : ${#fields.globalErrors()}" th:text="${err}">...</p>
 		</div>		
 		<div>
 			<div class="form">

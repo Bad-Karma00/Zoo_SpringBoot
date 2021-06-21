@@ -17,17 +17,19 @@ public class ResponsabileValidator implements Validator {
 	@Autowired
 	private ResponsabileService responsabileService;
 	
-    private static final Logger logger = LoggerFactory.getLogger(AnimaleValidator.class);
+    private static final Logger logger = LoggerFactory.getLogger(ResponsabileValidator.class);
 
 	@Override
 	public void validate(Object o, Errors errors) {
+		ValidationUtils.rejectIfEmptyOrWhitespace(errors, "matricola", "required");
 		ValidationUtils.rejectIfEmptyOrWhitespace(errors, "nome", "required");
+		ValidationUtils.rejectIfEmptyOrWhitespace(errors, "cognome", "required");
 
 		if (!errors.hasErrors()) {
 			logger.debug("confermato: valori non nulli");
 			if (this.responsabileService.alreadyExists((Responsabile)o)) {
 				logger.debug("e' un duplicato");
-				errors.reject("duplicato");
+				errors.reject("duplicate.responsabile");
 			}
 		}
 	}

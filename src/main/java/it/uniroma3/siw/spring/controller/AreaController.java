@@ -182,6 +182,7 @@ public class AreaController {
            }      
             return "aree.html";
         }
+        model.addAttribute("habitats",this.habitatService.tutti());      
         return "InserisciArea.html";
     }
     

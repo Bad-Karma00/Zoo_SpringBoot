@@ -23,12 +23,14 @@ public class HabitatValidator implements Validator{
 	@Override
 	public void validate(Object o, Errors errors) {
 		ValidationUtils.rejectIfEmptyOrWhitespace(errors, "nome", "required");
+		ValidationUtils.rejectIfEmptyOrWhitespace(errors, "dimensione", "required");
+		ValidationUtils.rejectIfEmptyOrWhitespace(errors, "descrizione", "required");
 
 		if (!errors.hasErrors()) {
 			logger.debug("confermato: valori non nulli");
 			if (this.habitatService.alreadyExists((Habitat)o)) {
 				logger.debug("e' un duplicato");
-				errors.reject("duplicato");
+				errors.reject("duplicate.habitat");
 			}
 		}
 	}

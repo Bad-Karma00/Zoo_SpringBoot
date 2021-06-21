@@ -4,7 +4,7 @@ import javax.persistence.*;
 
 
 @Entity
-@Table(uniqueConstraints=@UniqueConstraint(columnNames={"nome"}))
+@Table
 public class Animale implements Comparable<Animale> {
 	
 	@Id
