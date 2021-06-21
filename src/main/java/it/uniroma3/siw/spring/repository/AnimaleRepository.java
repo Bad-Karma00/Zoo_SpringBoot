@@ -2,6 +2,7 @@ package it.uniroma3.siw.spring.repository;
 
 import java.util.List;
 
+import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
 
 import it.uniroma3.siw.spring.model.Animale;
@@ -15,4 +16,8 @@ public interface AnimaleRepository extends CrudRepository<Animale,Long> {
 	public List<Animale> findByNomeAndArea(String nome,Area area);
 
 	public List<Animale> findByNomeOrArea(String nome,Area area);
+	
+	@Query("SELECT COUNT(a.id)"
+			 + " FROM  Animale a")
+	public int contaAnimali();
 }
