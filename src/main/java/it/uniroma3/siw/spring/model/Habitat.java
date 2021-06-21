@@ -8,7 +8,7 @@ import javax.persistence.*;
 
 
 @Entity
-@Table(uniqueConstraints=@UniqueConstraint(columnNames={"nome"}))
+@Table
  public class Habitat implements Comparable<Habitat> {
 	
 	@Id

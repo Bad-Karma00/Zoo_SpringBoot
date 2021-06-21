@@ -8,7 +8,7 @@ import org.springframework.format.annotation.DateTimeFormat;
 
 
 @Entity
-@Table(uniqueConstraints=@UniqueConstraint(columnNames={"nome"}))
+@Table
  public class Visita implements Comparable<Visita>{
 	
 	@Id

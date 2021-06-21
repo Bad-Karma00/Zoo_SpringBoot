@@ -202,6 +202,7 @@ public class HabitatController {
            }  
             return "habitats.html";
         }
+        model.addAttribute("responsabili",this.responsabileService.tutti());      
         return "InserisciHabitat.html";
     }
 	

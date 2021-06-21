@@ -137,6 +137,15 @@ li.dropdown1 {
 	
 }
 
+.errore{
+	font-family:verdana;
+	font-size:25px;
+	color:white;
+	padding-left:10px;
+	text-align:center;
+	padding-top:20px;
+	font-style:italic;
+}
 .titolo{
     font-size:35px;
 	text-align:center;
