@@ -76,12 +76,11 @@
 	
 		<h1>BENVENUTI ALLO ZOO</h1>
 		<p>Scopri le monki funny</p>
-		<div sec:authorize="hasAuthority('ADMIN')" > Has Authority ADMIN </div> 
-		<div sec:authorize="hasAuthority('USER')" > Has Authority USER </div> 
-		<div sec:authorize="hasRole('ROLE_ADMIN')">Has Role ROLE_ADMIN</div>
-		<div sec:authorize="hasRole('ROLE_USER')">Has Role ROLE_USER</div>
-		<div sec:authorize="hasRole('ADMIN')">Has Role ADMIN</div>
-		<div sec:authorize="hasRole('USER')">Has Role USER</div>
+		<div sec:authorize="hasAuthority('ADMIN')" > Benvenuto ADMIN:  <br> </div>
+		<div sec:authorize="hasAuthority('USER')" > Benvenuto Utente:  <br> </div>
+		
+		
+		<div sec:authorize="isAuthenticated()" th:text=${username}></div>
 	<div class="spacer"></div>
 </div>
 </header>
