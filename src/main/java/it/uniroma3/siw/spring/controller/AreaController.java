@@ -72,9 +72,11 @@ public class AreaController {
     		List<Area> aree = (List<Area>) areaService.tutte();
     		Collections.sort(aree);
     		Area areaDaRim = areaService.areaPerId(areaID);
+    		if(!(areaDaRim.getImmagine()==null)) {
     	   	String uploadDir ="photos/"+ areaDaRim.getId()+areaDaRim.getNome();
     		Path uploadPath = Paths.get(uploadDir);
     		FileUtils.deleteDirectory(uploadPath.toFile());;
+    		}
     		this.areaService.delete(areaDaRim);
     		model.addAttribute("aree", this.areaService.tutte());
     		return "aree.html";
@@ -111,11 +113,14 @@ public class AreaController {
         	areaNuova.setDescrizione(descrizioneNuova);
         	areaNuova.setOrario(orarioNuovo);
         	areaNuova.setHabitat(habitatNuovo);
+        	if(!(immagine.getSize()==0)) {
         	areaNuova.setImmagine(fileName);
         	areaNuova.setImmagine(immagine.getOriginalFilename());
-        	
+        	}
+        	else { areaNuova.setImmagine(null);}
         	areaService.inserisci(areaNuova);
             model.addAttribute("aree", this.areaService.tutte());
+            if(!(immagine.getSize()==0)) {
             String uploadDir ="photos/"+ areaNuova.getId()+areaNuova.getNome();
             
             Path uploadPath = Paths.get(uploadDir);
@@ -130,6 +135,7 @@ public class AreaController {
             } catch (IOException ioe) {        
                 throw new IOException("Salvataggio non riuscito: " + fileName, ioe);
             }      
+            }
             return "aree.html";
     }
     
@@ -160,14 +166,17 @@ public class AreaController {
         	List<Habitat> habitats = (List<Habitat>) habitatService.tutti();
         	Collections.sort(habitats);
              Habitat habitat = habitatService.habitatPerId(habitatID);
+             if(!(immagine.getSize()==0)) {
 			String fileName = StringUtils.cleanPath(immagine.getOriginalFilename());
 			area.setImmagine(fileName);
             area.setImmagine(immagine.getOriginalFilename());
+             }
         	area.setHabitat(habitat);
         	this.areaService.inserisci(area);
             model.addAttribute("aree", this.areaService.tutte());
+            if(!(immagine.getSize()==0)) {
            String uploadDir ="photos/"+ area.getId()+area.getNome();
-            
+           String fileName = StringUtils.cleanPath(immagine.getOriginalFilename());
            Path uploadPath = Paths.get(uploadDir);
            
            if (!Files.exists(uploadPath)) {
@@ -179,7 +188,8 @@ public class AreaController {
                Files.copy(inputStream, filePath, StandardCopyOption.REPLACE_EXISTING);
            } catch (IOException ioe) {        
                throw new IOException("Salvataggio non riuscito: " + fileName, ioe);
-           }      
+           }  
+            }
             return "aree.html";
         }
         model.addAttribute("habitats",this.habitatService.tutti());      

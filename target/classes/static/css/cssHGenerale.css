@@ -91,7 +91,7 @@ li.dropdown1 {
 }
 
 .pag1 {
-	background-image:url("https://i.pinimg.com/originals/e3/f2/b1/e3f2b12d8dae478ca6450c1beb2375e1.jpg");
+	background-image:url("/images/foresta.jpg");
 	background-attachment: fixed;
 	background-position: center;
 	background-repeat: no-repeat;
@@ -114,7 +114,7 @@ li.dropdown1 {
 
 
 .parallax {
-  background-image: url("https://i.pinimg.com/originals/55/10/54/551054340cdd3a9ef4452ec51b513085.jpg");
+  background-image:url("/images/savana.jpg");;
 
   min-height: 400px; 
 
@@ -149,7 +149,6 @@ li.dropdown1 {
   justify-content: center;
 	flex-wrap: wrap;
 	color:white;
-	background-image:url(https://www.wallpapertip.com/wmimgs/89-891902_savannah-hd-background.jpg);
 }
 
 .InformazioniC1{

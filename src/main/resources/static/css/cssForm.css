@@ -84,7 +84,7 @@ li.dropdown1 {
 }
 
 .pag1 {
-	background-image:url("https://wallpaperaccess.com/full/3979440.jpg");
+	background-image:url("/images/tigre.jpg");;
 	background-attachment: fixed;
 	background-position: center;
 	background-repeat: no-repeat;
@@ -106,7 +106,7 @@ li.dropdown1 {
 
 
 .parallax {
-  background-image: url("https://www.rai.it/dl/img/2020/03/05/1600x900_1583427635919_lontra.jpg");
+  background-image: url("/images/lontra.jpg");;
   min-height: 400px; 
   background-attachment: fixed;
   background-position: center;

@@ -1,6 +1,7 @@
 package it.uniroma3.siw.spring.controller;
 
 import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
 
 import javax.validation.Valid;
@@ -83,4 +84,45 @@ public class ResponsabileController {
         }
         return "InserisciResponsabile.html";
     }
+    
+    @RequestMapping(value="/ordineAlfabeticoResponsabile", method = RequestMethod.GET)
+    public String ordineAlfabeticoResponsabile(Model model) {
+    		List<Responsabile> responsabiliAlfabetico = this.responsabileService.tutti();
+    		
+    		if (responsabiliAlfabetico.size() > 0) {
+  			  Collections.sort(responsabiliAlfabetico, new Comparator<Responsabile>() {
+  			      @Override
+  			      public int compare(final Responsabile responsabile1, final Responsabile responsabile2 ) {
+  			    	  int differenza = 0;
+  			          differenza = responsabile1.getNome().compareTo(responsabile2.getNome());
+  			          if(differenza == 0) {
+  			        	  return responsabile1.getCognome().compareTo(responsabile2.getCognome());
+  			          }
+  			          else {
+  			        	  return differenza;
+  			          }
+  			      }
+  			  });
+  			}
+  		model.addAttribute("responsabili", responsabiliAlfabetico);
+  		
+      	return "responsabili.html";
+  }
+    
+    @RequestMapping(value="/ordineMatricola", method = RequestMethod.GET)
+    public String ordineMatricola(Model model) {
+    		List<Responsabile> responsabiliMatricola = this.responsabileService.tutti();
+    		
+    		if (responsabiliMatricola.size() > 0) {
+  			  Collections.sort(responsabiliMatricola, new Comparator<Responsabile>() {
+  			      @Override
+  			      public int compare(final Responsabile responsabile1, final Responsabile responsabile2 ) {
+  			    	return responsabile1.getMatricola().compareTo(responsabile2.getMatricola());
+  			      }
+  			  });
+  			}
+  		model.addAttribute("responsabili", responsabiliMatricola);
+  		
+      	return "responsabili.html";
+  }
 }

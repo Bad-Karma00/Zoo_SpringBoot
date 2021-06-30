@@ -84,7 +84,7 @@ li.dropdown1 {
 }
 
 .pag1 {
-	background-image:url("https://wallpaperaccess.com/full/3979440.jpg");
+	background-image:url("/images/tigre.jpg");
 	background-attachment: fixed;
 	background-position: center;
 	background-repeat: no-repeat;
@@ -124,7 +124,7 @@ li.dropdown1 {
 
 .spacer2 {
 	font-size: 0; 
-    height: 100px;
+    height: 50px;
     line-height: 0;
 }
 
@@ -187,7 +187,7 @@ li.dropdown1 {
 	display:flex;
 	justify-content: right;
 	flex-wrap: wrap;
-	background-color:green;
+	background-color:lightgreen;
 }
 
 .InformazioniC1-3{

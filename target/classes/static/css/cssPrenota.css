@@ -84,7 +84,7 @@ li.dropdown1 {
 }
 
 .pag1 {
-	background-image:url("https://i.ytimg.com/vi/XOxJwTxrIX4/maxresdefault.jpg");
+	background-image:url("/images/telefonoscimmia.jpg");
 	background-attachment: fixed;
 	background-position: center;
 	background-repeat: no-repeat;
@@ -101,7 +101,6 @@ li.dropdown1 {
 
 
 .pag2{
-	background-color:green;
 	font-size:20px;
 }
 
@@ -114,7 +113,7 @@ li.dropdown1 {
 
 
 .parallax {
-  background-image: url("https://i.pinimg.com/originals/55/10/54/551054340cdd3a9ef4452ec51b513085.jpg");
+  background-color: lightgreen;
 
   min-height: 400px; 
 
@@ -147,7 +146,6 @@ li.dropdown1 {
 	display:flex;
 	justify-content: left;
 	flex-wrap: wrap;
-	background-color:green;
 }
 
 .InformazioniC1{
