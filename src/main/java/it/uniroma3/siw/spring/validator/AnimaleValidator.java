@@ -22,12 +22,14 @@ public class AnimaleValidator implements Validator{
 	@Override
 	public void validate(Object o, Errors errors) {
 		ValidationUtils.rejectIfEmptyOrWhitespace(errors, "nome", "required");
+		ValidationUtils.rejectIfEmptyOrWhitespace(errors, "ordine", "required");
+		ValidationUtils.rejectIfEmptyOrWhitespace(errors, "classe", "required");
 
 		if (!errors.hasErrors()) {
 			logger.debug("confermato: valori non nulli");
 			if (this.animaleService.alreadyExists((Animale)o)) {
 				logger.debug("e' un duplicato");
-				errors.reject("duplicato");
+				errors.reject("duplicate.animale");
 			}
 		}
 	}
