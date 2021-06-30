@@ -84,7 +84,7 @@ li.dropdown1 {
 }
 
 .pag1 {
-	background-image:url("https://chapmanbrowns.files.wordpress.com/2015/04/scratching-head-monkey.jpg");
+	background-image:url("/images/monkey.jpg");
 	background-attachment: fixed;
 	background-position: center;
 	background-repeat: no-repeat;
@@ -99,10 +99,6 @@ li.dropdown1 {
 	width: 20%;
 }
 
-.pag2{
-	background-image:url("https://images.photowall.com/products/62137/zoo-animals.jpg?h=699&q=85");
-}
-
 #logo{
 	display: block;
 	margin-left:auto;
@@ -110,17 +106,6 @@ li.dropdown1 {
 	width: 9%;
 }
 
-
-.parallax {
-  background-image: url("https://i.pinimg.com/originals/55/10/54/551054340cdd3a9ef4452ec51b513085.jpg");
-
-  min-height: 400px; 
-
-  background-attachment: fixed;
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: cover;
-}
 
 .spacer {
 	font-size: 0; 
@@ -138,22 +123,21 @@ li.dropdown1 {
 .InformazioniC2{
   flex: 35%; /*Cambia quanta % l'oggetto si prende all'interno della flexbox*/
   max-width: 100%;
-  padding: 0 10px;
+  font-size:22px;
 }
 
 .InformazioniR{
 	display:flex;
 	justify-content: left;
 	flex-wrap: wrap;
-	background-color:white;
-}
-
-.InformazioniC1{
-  flex: 15%; /*Cambia quanta % l'oggetto si prende all'interno della flexbox*/
-  max-width: 50%;
+	background-color:peachpuff;
 }
 
 .InformazioniC1 img {
   width: 100%;
   object-fit:cover;
+}
+
+.InfoContainer ul{
+	list-style:none;
 }

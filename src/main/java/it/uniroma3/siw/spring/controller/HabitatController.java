@@ -69,9 +69,11 @@ public class HabitatController {
     		List<Habitat> habitats = (List<Habitat>) habitatService.tutti();
     		Collections.sort(habitats);
     		Habitat habitatDaRim = habitatService.habitatPerId(habitatID);
+    		if(!(habitatDaRim.getImmagine()==null ||(habitatDaRim.getImmagineTop()==null))) {
     	   	String uploadDir ="photos/"+ habitatDaRim.getId()+habitatDaRim.getNome();
     		Path uploadPath = Paths.get(uploadDir);
         		 FileUtils.deleteDirectory(uploadPath.toFile());;
+    		}
     		this.habitatService.delete(habitatDaRim);
     		model.addAttribute("habitats", this.habitatService.tutti());
     		return "habitats.html";
@@ -98,7 +100,7 @@ public class HabitatController {
     		Habitat habitatDaRim = habitatService.habitatPerId(habitatID);
 	     	String uploadDir1 ="photos/"+ habitatDaRim.getId()+habitatDaRim.getNome();
 		    Path uploadPath1 = Paths.get(uploadDir1);
-   		  FileUtils.deleteDirectory(uploadPath1.toFile());;
+   		   FileUtils.deleteDirectory(uploadPath1.toFile());;
         	List<Responsabile> responsabili = (List<Responsabile>) responsabileService.tutti();
         	Collections.sort(responsabili);
             Responsabile responsabileNuovo =responsabileService.responsabilePerId(responsabileID);
@@ -110,13 +112,20 @@ public class HabitatController {
         	habitatNuovo.setDimensione(dimensioneNuova);
         	habitatNuovo.setDescrizione(descrizioneNuova);
         	habitatNuovo.setResponsabile(responsabileNuovo);
+        	if(!(immagine.getSize()==0)) {
         	habitatNuovo.setImmagine(fileName);
         	habitatNuovo.setImmagine(immagine.getOriginalFilename());
+        	}
+        	else { habitatNuovo.setImmagine(null);}
+        	if(!(immagineTop.getSize()==0)) {
         	habitatNuovo.setImmagineTop(fileNameTop);
         	habitatNuovo.setImmagineTop(immagineTop.getOriginalFilename());
+        	}
+        	else { habitatNuovo.setImmagineTop(null);}
         	
         	habitatService.inserisci(habitatNuovo);
             model.addAttribute("habitats", this.habitatService.tutti());
+            if(!((immagine.getSize()==0)||(immagineTop.getSize()==0))) {
             String uploadDir ="photos/"+ habitatNuovo.getId()+habitatNuovo.getNome();
             
             Path uploadPath = Paths.get(uploadDir);
@@ -137,7 +146,8 @@ public class HabitatController {
                 Files.copy(inputStream, filePath, StandardCopyOption.REPLACE_EXISTING);
             } catch (IOException ioe) {        
                 throw new IOException("Salvataggio non riuscito: " + fileName, ioe);
-            }  
+            }
+            }
             return "habitats.html";
     }
     
@@ -171,15 +181,20 @@ public class HabitatController {
         	List<Responsabile> responsabili = (List<Responsabile>) responsabileService.tutti();
         	Collections.sort(responsabili);
            Responsabile responsabile= responsabileService.responsabilePerId(responsabileID);
+           if(!((immagine.getSize()==0)||(immagineTop.getSize()==0))) {
 			String fileName = StringUtils.cleanPath(immagine.getOriginalFilename());
 			String fileName2 = StringUtils.cleanPath(immagineTop.getOriginalFilename());
 			habitat.setImmagine(fileName);
             habitat.setImmagine(immagine.getOriginalFilename());
 			habitat.setImmagineTop(fileName2);
             habitat.setImmagineTop(immagineTop.getOriginalFilename());
+           }
         	habitat.setResponsabile(responsabile);
         	this.habitatService.inserisci(habitat);
             model.addAttribute("habitats", this.habitatService.tutti());
+            if(!((immagine.getSize()==0)||(immagineTop.getSize()==0))) {
+            	String fileName = StringUtils.cleanPath(immagine.getOriginalFilename());
+    			String fileName2 = StringUtils.cleanPath(immagineTop.getOriginalFilename());
            String uploadDir ="photos/"+ habitat.getId()+habitat.getNome();
             
            Path uploadPath = Paths.get(uploadDir);
@@ -200,6 +215,7 @@ public class HabitatController {
            } catch (IOException ioe) {        
                throw new IOException("Salvataggio non riuscito: " + fileName, ioe);
            }  
+            }
             return "habitats.html";
         }
         model.addAttribute("responsabili",this.responsabileService.tutti());      

@@ -7,14 +7,23 @@
   	
   	<div class="parallax">
 	<div class="titolo">Lista dei Responsabili</div>
-    	<div class="lista">
+	  	<div class="lista">
+  		<ul>
+  			<li class="dropdown1">
+     			<a href="" class="dropbtn1">Ordine</a>
+     				<div class="dropdown-content1">    
+      					<a href="/ordineAlfabeticoResponsabile" th:style="'color: black;'">Alfabetico</a>
+      						<a href="/ordineMatricola" th:style="'color: black;'">Matricola</a>
+      				</div>
+      			</li>
+      		</ul>
+		</div>
     	<ul>
 			<li th:each="responsabile : ${responsabili}">
 				 <span th:text="|${responsabile.nome} ${responsabile.cognome}|"/></span>
 				 <a class="testo" th:each="habitat : ${responsabile?.habitat}" th:href="@{'/habitat' + '/' + ${habitat.id}}" th:text=" ${habitat.nome}"></a>
 		</ul>
 		</div>
-	</div>
 	<div class="parallax">	</div>
 </body>
 </html>

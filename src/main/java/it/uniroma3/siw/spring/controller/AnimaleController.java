@@ -12,6 +12,7 @@ import java.util.List;
 
 import javax.validation.Valid;
 
+import org.apache.tomcat.util.http.fileupload.FileUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -64,12 +65,11 @@ public class AnimaleController {
     		List<Animale> animali = (List<Animale>) animaleService.tutti();
     		Collections.sort(animali);
     		Animale animaleDaRim = animaleService.animalePerId(animaleID);
-    	   	String fileName = StringUtils.cleanPath(animaleDaRim.getImmagine());
-    	   	String uploadDir ="photos/"+ animaleDaRim.getId()+animaleDaRim.getNome();
-    		Path uploadPath = Paths.get(uploadDir);
-    		 Path filePath = uploadPath.resolve(fileName);
-    		 Files.delete(filePath);
-    		 Files.delete(uploadPath);
+    		if(!(animaleDaRim.getImmagine()==null)) {
+    		   	String uploadDir ="photos/"+ animaleDaRim.getId()+animaleDaRim.getNome();
+        		Path uploadPath = Paths.get(uploadDir);
+        		  FileUtils.deleteDirectory(uploadPath.toFile());;
+    		}
     		this.animaleService.delete(animaleDaRim);
     		model.addAttribute("animali", this.animaleService.tutti());
     		return "animali.html";
@@ -93,11 +93,9 @@ public class AnimaleController {
     								 Model model, BindingResult bindingResult) throws IOException{
     	    
     		Animale animaleDaRim = animaleService.animalePerId(animaleID);
-	   	    String fileName1 = StringUtils.cleanPath(animaleDaRim.getImmagine());
-	     	String uploadDir1 ="photos/"+ animaleDaRim.getId()+animaleDaRim.getNome();
+    		String uploadDir1 ="photos/"+ animaleDaRim.getId()+animaleDaRim.getNome();
 		    Path uploadPath1 = Paths.get(uploadDir1);
-		    Path filePath1 = uploadPath1.resolve(fileName1);
-		    Files.delete(filePath1);
+		    FileUtils.deleteDirectory(uploadPath1.toFile());;
         	List<Animale> animali = (List<Animale>) animaleService.tutti();
         	Collections.sort(animali);
             Area areaNuova = areaService.areaPerId(areaID);
@@ -108,11 +106,14 @@ public class AnimaleController {
         	animaleNuovo.setClasse(classeNuova);
         	animaleNuovo.setOrdine(ordineNuovo);
         	animaleNuovo.setAreaAnimale(areaNuova);
+        	if(!(immagine.getSize()==0)) {
         	animaleNuovo.setImmagine(fileName);
         	animaleNuovo.setImmagine(immagine.getOriginalFilename());
-        	
+        	}
+        	else {animaleNuovo.setImmagine(null);}
         	animaleService.inserisci(animaleNuovo);
             model.addAttribute("animali", this.animaleService.tutti());
+            if(!(immagine.getSize()==0)) {
             String uploadDir ="photos/"+ animaleNuovo.getId()+animaleNuovo.getNome();
             
             Path uploadPath = Paths.get(uploadDir);
@@ -126,7 +127,8 @@ public class AnimaleController {
                 Files.copy(inputStream, filePath, StandardCopyOption.REPLACE_EXISTING);
             } catch (IOException ioe) {        
                 throw new IOException("Salvataggio non riuscito: " + fileName, ioe);
-            }      
+            }   
+            }
             return "animali.html";
     }
     
@@ -161,6 +163,7 @@ public class AnimaleController {
         	animale.setAreaAnimale(area);
         	this.animaleService.inserisci(animale);
             model.addAttribute("animali", this.animaleService.tutti());
+            if(!(immagine.getSize()==0)) {
            String uploadDir ="photos/"+ animale.getId()+animale.getNome();
             
            Path uploadPath = Paths.get(uploadDir);
@@ -176,6 +179,7 @@ public class AnimaleController {
                throw new IOException("Salvataggio non riuscito: " + fileName, ioe);
            }      
             return "animali.html";
+        }
         }
         model.addAttribute("aree",this.areaService.tutte());      
         return "InserisciAnimale.html";
