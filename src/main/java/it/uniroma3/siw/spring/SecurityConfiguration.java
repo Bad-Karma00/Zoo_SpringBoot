@@ -63,7 +63,7 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 		.antMatchers("/InserisciResponsabile", "/RimuoviResponsabile", "/responsabili","/registerAdmin").access("hasAuthority('ADMIN')")
 			.anyRequest().authenticated()
 		.and()
-		.formLogin()
+		.formLogin().loginPage("/login").permitAll()
 		.and()
 		.logout().logoutUrl("/logout")
 		.logoutSuccessUrl("/index")

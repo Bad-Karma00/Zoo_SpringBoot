@@ -43,7 +43,7 @@ public class MainController {
 	private final Logger logger = LoggerFactory.getLogger(this.getClass());
 	
 	@RequestMapping(value = {"/", "index"}, method = RequestMethod.GET)
-	public String index(Model model) {
+	public String index(Model model, Authentication auth) {
 		int nAnimali = animaleRepository.contaAnimali();
 		logger.debug("Animali contati: " + nAnimali);
 		
@@ -60,6 +60,15 @@ public class MainController {
 		model.addAttribute("animale2", animaleService.animalePerId(randID2));
 		
 		model.addAttribute("animale3", animaleService.animalePerId(randID3));
+		
+
+		String username = null;
+		
+		if(auth != null) {
+			username = auth.getName();
+			logger.debug("Username utente:" + username);
+			model.addAttribute("username", username);
+		}
 		
 		return "index";
 	}
