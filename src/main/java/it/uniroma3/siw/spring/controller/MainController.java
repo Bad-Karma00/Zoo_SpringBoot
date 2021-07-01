@@ -1,5 +1,6 @@
 package it.uniroma3.siw.spring.controller;
 
+import java.io.FileNotFoundException;
 import java.util.ArrayList;
 
 import java.util.List;
@@ -10,6 +11,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.util.ResourceUtils;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
@@ -43,25 +45,18 @@ public class MainController {
 	private final Logger logger = LoggerFactory.getLogger(this.getClass());
 	
 	@RequestMapping(value = {"/", "index"}, method = RequestMethod.GET)
-	public String index(Model model, Authentication auth) {
-		int nAnimali = animaleRepository.contaAnimali();
+	public String index(Model model, Authentication auth) throws FileNotFoundException {
+		List<Long> nAnimali = animaleRepository.contaAnimali();
 		logger.debug("Animali contati: " + nAnimali);
 		
 		
-		Long randID1 = 1 + (long) (Math.random() * (nAnimali - 0));
-		logger.debug("Primo ID random: " + randID1);
-		Long randID2 = 1 + (long) (Math.random() * (nAnimali - 0));
-		logger.debug("Secondo ID random: " + randID2);
-		Long randID3 = 1 + (long) (Math.random() * (nAnimali - 0));
-		logger.debug("Terzo ID random: " + randID3);
 		
-		model.addAttribute("animale1", animaleService.animalePerId(randID1));
+		model.addAttribute("animale1", animaleService.animalePerId(nAnimali.get(0)));
 		
-		model.addAttribute("animale2", animaleService.animalePerId(randID2));
+		model.addAttribute("animale2", animaleService.animalePerId(nAnimali.get(1)));
 		
-		model.addAttribute("animale3", animaleService.animalePerId(randID3));
-		
-
+		model.addAttribute("animale3", animaleService.animalePerId(nAnimali.get(2)));
+			
 		String username = null;
 		
 		if(auth != null) {

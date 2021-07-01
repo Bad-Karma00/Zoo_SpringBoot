@@ -1,7 +1,17 @@
-<html>
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="fragments/baseForm.html :: headerfiles(title='Logout')"> </head>
 <body>
+	<header th:replace="fragments/baseForm.html :: intestazione"></header>
+	<div class="parallax">
+	<div>
+    	<div class="titolo">Logout</div>
+    	</div>
 <form th:action="@{/logout}" method="post">
+<div class="form">
     <input type="submit" value="Logout" />
+    </div>
 </form>
+</div>
 </body>
 </html>

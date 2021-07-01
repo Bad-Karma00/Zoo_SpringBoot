@@ -19,12 +19,11 @@
       	</ul>
     	<ul>
 			<li th:each="animale : ${animali}">
-				 <span th:text="|${animale.nome} ${animale?.area?.nome}|"></span>	
+				 <span th:text="${animale.nome}"></span>	
+				  <a th:href="@{'/area' + '/' + ${animale?.area?.id}}" th:text="${animale?.area?.nome}"/></a>
 				 <div class="ImgC"><img th:src="@{${animale.photosImagePath}}"></div>
 		</ul>
 		</div>
-	</div>
-	</div>
-	<div class="parallax">	</div>
+	<div class="parallax"></div>
 </body>
 </html>

@@ -3,6 +3,7 @@ body{
 	  text-align:center;
 	  font-family: 'Oswald', sans-serif;
 	  font-size: 18px;
+	  background-color:lightgreen;
 	}
 
 .navigation-bar{
@@ -158,6 +159,12 @@ li.dropdown1 {
 	font-style:italic;
 }
 
+.disclaimer{
+	
+    background-color: lightgreen;
+    font-size: 25px;
+	
+}
 
 
 .InformazioniC1 img {

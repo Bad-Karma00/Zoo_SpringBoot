@@ -123,7 +123,7 @@ li.dropdown1 {
 .InformazioniC2{
   flex: 35%; /*Cambia quanta % l'oggetto si prende all'interno della flexbox*/
   max-width: 100%;
-  font-size:22px;
+  font-size:20px;
 }
 
 .InformazioniR{

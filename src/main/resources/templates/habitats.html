@@ -14,8 +14,9 @@
 			<li th:each="habitat : ${habitats}">
 			 <div class="InformazioniC2">
 	<div class="InfoContainer">
+	<div class="ImgC"><img th:src="@{${habitat.photosImagePath}}"></div>
 				<a th:href="@{'/habitat' + '/' + ${habitat.id}}" th:text="${habitat.nome}"/></a>
-				<p class ="Testo" th:text="${habitat.descrizione}">
+				<p class ="Testo" th:text="${habitat.descrizione}" th:style="'font-size:25px;'">
 				</p>
 				</div>
 				</div>

@@ -6,16 +6,18 @@
   <div class="pag1"  th:style="'background-image:url(' + ${immagineT} + ');'">
 	<div class="banner">
 	<img src="https://image.freepik.com/free-vector/monkey-logo-design-vector-illustration_104950-126.jpg" id="logo">
- <ul class="navigation-bar">
-		<li><a href="/">Home</a></li>
+  <ul class="navigation-bar">
+		<li><a href="/index">Home</a></li>
 		<li><a href=/informazioni>Info</a></li>
+		<div sec:authorize="hasAuthority('USER')">
 		<li class="dropdown1">
 		<div class="dropbtn1">Biglietti</div>
 		<div class="dropdown-content1">
-		<a href=/addVisita>Prenota</a>
-	    <a href=/rimVisita>Annulla Prenotazione</a>
+		<a href=/prenota>Prenota</a>
 		</div>
 		</li>
+		</div>
+		<div sec:authorize="hasAuthority('ADMIN')">
 		<li class="dropdown1">
 		<div class="dropbtn1">Operazioni</div>
 		<div class="dropdown-content1">
@@ -33,33 +35,45 @@
 				<a href="/area">Lista Aree</a>
 				<a href="/visita">Lista Visite</a>
 				<a href="/responsabile">Lista Responsabili</a>
-			   <a href="/animale">Lista Animali</a>
-				</div>
-		</li>
+			    <a href="/animale">Lista Animali</a>
+			    <a href="/registerAdmin">Registra un nuovo Admin</a>
+			</div>
+		</li>		
+		</div>
 		<li class="dropdown1">
 			<a href="/habitat" class="dropbtn1">Habitat</a>
-				<div class="dropdown-content1">
-				<a href="Habitat_Marino.html">Marino</a>
-				<a href="Habitat_Savana.html">Savana</a>
-				<a href="Habitat_Foresta.html">Foresta</a>
-				</div>
-		</li>		
+		</li>
+		<div  sec:authorize="!isAuthenticated()">
+ 		<li>
+  		<a href="/login">Login</a>
+  		</li>
+  		</div>
+  		<div  sec:authorize="isAuthenticated()">
+  		<li>
+  		<a href="/logout">Logout</a>
+  		</li>
+  		</div>
+  		<div  sec:authorize="hasAuthority('USER')">
+  		<li>
+  		<a href="/areaP">Area Personale</a>
+  		</li>
+  		</div>
+  		<div  sec:authorize="!isAuthenticated()">
+  		<li>
+  		<a href="/registerUser">Registrati</a>
+  		</li>
+  		</div>		
 	  </ul>
 	  </div>
 	  <br>
 	  <br>
 	  <br>
-	
-	     <h1>HABITAT <class="Testo" th:text="*{habitat.nome}"></h1>
-		 <div>DIMENSIONE(mq) <class="Testo" th:text="*{habitat.dimensione}"></div>
-      <br>
-      <br>
-     <P>Responsabile:<class="Testo" th:text="|${habitat?.responsabile?.nome} ${habitat?.responsabile?.cognome}|"></p>
-		
 	<div class="spacer"></div>
 </div>
 <div class="middle">
 		 <h1>HABITAT <class="Testo" th:text="*{habitat.nome}"></h1>
+		 <div >DIMENSIONE(mq) <class="Testo" th:text="*{habitat.dimensione}"></div>
+		  <P>Responsabile:<class="Testo" th:text="|${habitat?.responsabile?.nome} ${habitat?.responsabile?.cognome}|"></p>
 		 <p th:text="*{habitat.descrizione}"></p>
 </div>
 <div class="parallax" th:style="'background-image:url(' + ${habitat.photosImagePath} + ');'">
