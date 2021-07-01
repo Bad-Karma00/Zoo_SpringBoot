@@ -183,4 +183,13 @@ ul{
 	 object-fit:cover;
   display:inline;
 }
+span{
+	font-size:25px;
+}
+.testo{
+	font-size:25px;
+	color:white;
+	text-decoration: none;
+    background-color: black;
+}
 

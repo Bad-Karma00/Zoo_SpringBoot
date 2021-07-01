@@ -18,7 +18,7 @@ import javax.persistence.*;
 	@Column (nullable = false)
 	private Long dimensione;
 	
-	@Column (nullable = false)
+	@Column (nullable = false, length=1024)
 	private String descrizione;
 	
 	@Column (nullable = false)

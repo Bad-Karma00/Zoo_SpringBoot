@@ -73,7 +73,7 @@ public class AreaController {
     		Collections.sort(aree);
     		Area areaDaRim = areaService.areaPerId(areaID);
     		if(!(areaDaRim.getImmagine()==null)) {
-    	   	String uploadDir ="photos/"+ areaDaRim.getId()+areaDaRim.getNome();
+    	   	String uploadDir ="photos/"+ areaDaRim.getId()+areaDaRim.getNome().replaceAll("\\s+","");
     		Path uploadPath = Paths.get(uploadDir);
     		FileUtils.deleteDirectory(uploadPath.toFile());;
     		}
@@ -100,7 +100,7 @@ public class AreaController {
     								 Model model, BindingResult bindingResult) throws IOException{
     	    
     		Area areaDaRim = areaService.areaPerId(areaID);
-	     	String uploadDir1 ="photos/"+ areaDaRim.getId()+areaDaRim.getNome();
+	     	String uploadDir1 ="photos/"+ areaDaRim.getId()+areaDaRim.getNome().replaceAll("\\s+","");
 		    Path uploadPath1 = Paths.get(uploadDir1);
 		    FileUtils.deleteDirectory(uploadPath1.toFile());;
         	List<Habitat> habitats = (List<Habitat>) habitatService.tutti();
@@ -121,7 +121,7 @@ public class AreaController {
         	areaService.inserisci(areaNuova);
             model.addAttribute("aree", this.areaService.tutte());
             if(!(immagine.getSize()==0)) {
-            String uploadDir ="photos/"+ areaNuova.getId()+areaNuova.getNome();
+            String uploadDir ="photos/"+ areaNuova.getId()+areaNuova.getNome().replaceAll("\\s+","");
             
             Path uploadPath = Paths.get(uploadDir);
             
@@ -144,7 +144,7 @@ public class AreaController {
     	Area area=this.areaService.areaPerId(id);
     	model.addAttribute("area", area);
     	model.addAttribute("immagine",area.getPhotosImagePath());
-    	model.addAttribute("animali",animaleService.animalePerArea(area));
+    	model.addAttribute("animali",this.animaleService.animalePerArea(area));
     	return "area.html";
     }
 
@@ -175,7 +175,7 @@ public class AreaController {
         	this.areaService.inserisci(area);
             model.addAttribute("aree", this.areaService.tutte());
             if(!(immagine.getSize()==0)) {
-           String uploadDir ="photos/"+ area.getId()+area.getNome();
+           String uploadDir ="photos/"+ area.getId()+area.getNome().replaceAll("\\s+","");
            String fileName = StringUtils.cleanPath(immagine.getOriginalFilename());
            Path uploadPath = Paths.get(uploadDir);
            

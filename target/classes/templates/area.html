@@ -9,11 +9,11 @@
  <ul class="navigation-bar">
 		<li><a href="/">Home</a></li>
 		<li><a href=/informazioni>Info</a></li>
+	<div sec:authorize="hasAuthority('USER')">
 		<li class="dropdown1">
 		<div class="dropbtn1">Biglietti</div>
 		<div class="dropdown-content1">
-		<a href=/addVisita>Prenota</a>
-	    <a href=/rimVisita>Annulla Prenotazione</a>
+		<a href=/prenota>Prenota</a>
 		</div>
 		</li>
 		<li class="dropdown1">
@@ -36,14 +36,29 @@
 			   <a href="/animale">Lista Animali</a>
 				</div>
 		</li>
-		<li class="dropdown1">
-			<a href="/habitat" class="dropbtn1">Habitat</a>
-				<div class="dropdown-content1">
-				<a href="Habitat_Marino.html">Marino</a>
-				<a href="Habitat_Savana.html">Savana</a>
-				<a href="Habitat_Foresta.html">Foresta</a>
-				</div>
+		<li >
+			<a href="/habitat">Habitat</a>
 		</li>		
+	  <div  sec:authorize="!isAuthenticated()">
+ 		<li>
+  		<a href="/login">Login</a>
+  		</li>
+  		</div>
+  		<div  sec:authorize="isAuthenticated()">
+  		<li>
+  		<a href="/logout">Logout</a>
+  		</li>
+  		</div>
+  		<div  sec:authorize="hasAuthority('USER')">
+  		<li>
+  		<a href="/areaP">Area Personale</a>
+  		</li>
+  		</div>
+  		<div  sec:authorize="!isAuthenticated()">
+  		<li>
+  		<a href="/registerUser">Registrati</a>
+  		</li>
+  		</div>		
 	  </ul>
 	  </div>
 	  <br>
@@ -51,7 +66,7 @@
 	  <br>
 	
 	     <h1>AREA <class="Testo" th:text="*{area.nome}"></h1>
-		 <div>ORARIO CHIUSURA <class="Testo" th:text="*{area.orario}"></div>
+		 <div class="Testo">ORARIO CHIUSURA <class="Testo" th:text="*{area.orario}"></div>
       <br>
       <br>
      <P>Habitat <class="Testo" th:text="|${area?.habitat?.nome}|"></p>
@@ -65,7 +80,7 @@
 <div class="parallax" th:style="'background-image:url(' + ${immagine} + ');'">
 <div class="container">
 			<ul th:each="animale : ${animali}">
-				    <li class="ImgC"><img th:src="@{${animale.photosImagePath}}"></li>
+				    <li class="ImgC"><img th:src="@{${animale.photosImagePath}}" onerror="this.style.display='none'"></li>
 				   </ul>
 		</div>
   <div class="ImgR">
@@ -77,9 +92,9 @@
   <th>Classe</th>
   </tr>
   <tr th:each="animale : ${animali}">
-  <td th:text="${animale.nome}"></td>
-  <td th:text="${animale.ordine}"></td>
-  <td th:text="${animale.classe}"></td>
+  <td th:text="${animale.nome}" th:style="'color:yellow;'"></td>
+  <td th:text="${animale.ordine}"  th:style="'color:yellow;'"></td>
+  <td th:text="${animale.classe}"  th:style="'color:yellow;'"></td>
   </tr>
 </table>
 		</div>

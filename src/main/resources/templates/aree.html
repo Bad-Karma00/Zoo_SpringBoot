@@ -19,10 +19,10 @@
       	</ul>
     	<ul>
 			<li th:each="area : ${aree}">
-				 <a th:href="@{'/area' + '/' + ${area.id}}" th:text="|${area.nome} ${area?.habitat?.nome}|"/></a>
+				 <a th:href="@{'/area' + '/' + ${area.id}}" th:text="${area.nome}"/></a>
+				  <a th:href="@{'/habitat' + '/' + ${area?.habitat?.id}}" th:text="${area?.habitat?.nome}"/></a>
 		</ul>
 		</div>
-	</div>
-	<div class="parallax">	</div>
+	<div class="parallax"></div>
 </body>
 </html>

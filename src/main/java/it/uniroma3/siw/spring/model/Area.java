@@ -100,7 +100,7 @@ import javax.persistence.*;
 	    public String getPhotosImagePath() {
 	        if (immagine == null || id == null) return null;
 	         
-	        return "/photos/" + id + nome + "/" + immagine;
+	        return "/photos/" + id + (nome.replaceAll("\\s+","")) + "/" + immagine;
 	    }
 	 
 	 @Transient

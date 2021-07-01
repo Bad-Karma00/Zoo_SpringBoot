@@ -17,7 +17,8 @@ public interface AnimaleRepository extends CrudRepository<Animale,Long> {
 
 	public List<Animale> findByNomeOrArea(String nome,Area area);
 	
-	@Query("SELECT COUNT(a.id)"
-			 + " FROM  Animale a")
-	public int contaAnimali();
+	@Query("SELECT a.id"
+			+ " FROM Animale a"
+			+ " ORDER BY RAND()")
+	public List<Long> contaAnimali();
 }

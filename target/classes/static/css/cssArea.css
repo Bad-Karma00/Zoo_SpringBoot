@@ -173,7 +173,7 @@ li.dropdown1 {
 	 padding-bottom:20px;
 }
 .Testo{
-	font-size:20px;
+	font-size:30px;
 }
 
 ul{
@@ -196,12 +196,13 @@ ul{
 	}
 h1{
 	  text-transform: uppercase;
+	   -webkit-text-stroke: 2px black;
 
 	}
 	
 	p{
 	font-style:italic;
-	font-size:25px;
+	font-size:35px;
 	}
 	
 	.Img1 img{
@@ -212,6 +213,7 @@ h1{
 table, th, td {
   border: 1px solid black;
   border-collapse: collapse;
+  background-color: coral;
 }
 
 th{
