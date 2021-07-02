@@ -6,7 +6,6 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.nio.file.StandardCopyOption;
-import java.time.LocalDateTime;
 import java.time.LocalTime;
 import java.util.Collections;
 import java.util.Comparator;
@@ -26,13 +25,11 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 
-import it.uniroma3.siw.spring.model.Animale;
 import it.uniroma3.siw.spring.model.Area;
 import it.uniroma3.siw.spring.model.Habitat;
 import it.uniroma3.siw.spring.service.AnimaleService;
 import it.uniroma3.siw.spring.service.AreaService;
 import it.uniroma3.siw.spring.service.HabitatService;
-import it.uniroma3.siw.spring.validator.AnimaleValidator;
 import it.uniroma3.siw.spring.validator.AreaValidator;
 
 @Controller

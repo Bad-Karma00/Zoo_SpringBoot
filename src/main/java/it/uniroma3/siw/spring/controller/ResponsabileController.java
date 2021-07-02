@@ -15,7 +15,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import it.uniroma3.siw.spring.model.Responsabile;
-import it.uniroma3.siw.spring.service.HabitatService;
 import it.uniroma3.siw.spring.service.ResponsabileService;
 import it.uniroma3.siw.spring.validator.ResponsabileValidator;
 
@@ -28,11 +27,7 @@ public class ResponsabileController {
 	@Autowired
 	private ResponsabileValidator responsabileValidator;
 	
-	@Autowired
-	private HabitatService habitatService;
-	
-    
-    @RequestMapping(value="/addResponsabile", method = RequestMethod.GET)
+	@RequestMapping(value="/addResponsabile", method = RequestMethod.GET)
     public String addResponsabile(Model model) {
     		model.addAttribute("responsabile", new Responsabile());
     		return "InserisciResponsabile.html";

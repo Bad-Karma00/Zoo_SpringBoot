@@ -1,7 +1,6 @@
 package it.uniroma3.siw.spring.model;
 
 
-import java.time.LocalDateTime;
 import java.time.LocalTime;
 import java.util.Collections;
 import java.util.List;
