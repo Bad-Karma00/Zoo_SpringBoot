@@ -1,6 +1,7 @@
 package it.uniroma3.siw.spring.service;
 
 
+import java.util.Collections;
 import java.util.List;
 
 import java.util.Optional;
@@ -34,6 +35,15 @@ public class VisitaService {
 		return (List<Visita>) visitaRepository.findAll();
 	}
 	
+	
+	@Transactional
+	public List<Visita> visitePerId(List<Long> visiteID) {
+		List<Visita> optional = (List<Visita>) visitaRepository.findAllById(visiteID);
+		if (!(optional.isEmpty()))
+			return optional;
+		else 
+			return Collections.emptyList();
+	}
 	
 	@Transactional
 	public Visita visitaPerId(Long id) {

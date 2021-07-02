@@ -94,10 +94,9 @@ public class MainController {
 		
 		List<Visita> visite = new ArrayList<>();
 		
-		for(Long id : visiteID) {
-			visite.add(visitaService.visitaPerId(id));
-			logger.debug("Visita trovata:" + visitaService.visitaPerId(id).toString());
-		}
+		visite.addAll(visitaService.visitePerId(visiteID));
+		logger.debug(visite.toString());
+		
 		model.addAttribute("visite", visite);
 		return "areaPersonale.html";
 	}

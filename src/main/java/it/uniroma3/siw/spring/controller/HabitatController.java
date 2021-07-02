@@ -100,7 +100,7 @@ public class HabitatController {
     		Habitat habitatDaRim = habitatService.habitatPerId(habitatID);
 	     	String uploadDir1 ="photos/"+ habitatDaRim.getId()+habitatDaRim.getNome();
 		    Path uploadPath1 = Paths.get(uploadDir1);
-   		   FileUtils.deleteDirectory(uploadPath1.toFile());;
+   		    FileUtils.deleteDirectory(uploadPath1.toFile());;
         	List<Responsabile> responsabili = (List<Responsabile>) responsabileService.tutti();
         	Collections.sort(responsabili);
             Responsabile responsabileNuovo =responsabileService.responsabilePerId(responsabileID);
