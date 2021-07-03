@@ -21,7 +21,7 @@
 			<li th:each="animale : ${animali}">
 				 <span th:text="${animale.nome}"></span>	
 				  <a th:href="@{'/area' + '/' + ${animale?.area?.id}}" th:text="${animale?.area?.nome}"/></a>
-				 <div class="ImgC"><img th:src="@{${animale.photosImagePath}}"></div>
+				 <div class="ImgC"><img th:src="@{${animale.photosImagePath}}"  onerror="this.style.display='none'"></div>
 		</ul>
 		</div>
 	<div class="parallax"></div>
