@@ -9,11 +9,11 @@
 	<header th:fragment="intestazione">
 <div class="pag1">
 	<div class="banner">
-	<img th:src="@{/images/logo.jpg}"id="logo">
-<ul class="navigation-bar">
+	<img th:src="@{/images/logo.jpg}" id="logo">
+	 <ul class="navigation-bar">
 		<li><a href="/index">Home</a></li>
 		<li><a href=/informazioni>Info</a></li>
-		<div sec:authorize="hasAuthority('USER')">
+	<div sec:authorize="hasAuthority('USER')">
 		<li class="dropdown1">
 		<div class="dropbtn1">Biglietti</div>
 		<div class="dropdown-content1">
@@ -72,6 +72,9 @@
 	  <br>
 	  <br>
 	  <br>
+	
+		<h1>BENVENUTI ALLO ZOO</h1>
+		<p>Scopri i nostri habitat e i loro ospiti</p>
 	<div class="spacer"></div>
 </div>
 </header>

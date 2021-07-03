@@ -1,8 +1,13 @@
 package it.uniroma3.siw.spring.controller;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
+import java.util.Date;
 import java.util.List;
 
 import javax.validation.Valid;
@@ -85,12 +90,10 @@ public class VisitaController {
     @RequestMapping(value = "/addVisita", method = RequestMethod.POST)
     public String newVisita(@Valid @ModelAttribute("visita") Visita visita, 
     								Model model, BindingResult bindingResult,
-    								Authentication auth) {
+    								Authentication auth) throws ParseException {
     	
     	this.visitaValidator.validate(visita, bindingResult);
         if (!bindingResult.hasErrors()) {
-        	
-        	
         	String username = auth.getName();
         	logger.debug(username);
         	Credentials credenziali = this.credentialsService.getCredentials(username);
@@ -98,8 +101,10 @@ public class VisitaController {
         	this.visitaService.inserisci(visita);
             model.addAttribute("visita", this.visitaService.tutte());
             model.addAttribute("visita", visita);
+        	DateTimeFormatter formatters = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+            model.addAttribute("dataV", visita.getData().format(formatters));
             return "VisitaConfermata.html";
-        }
+        	}
         return "prenota.html";
     }
     
