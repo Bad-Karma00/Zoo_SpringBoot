@@ -63,15 +63,15 @@ public class HabitatService {
 	}
 	//
 	@Transactional
-	public void delete(Habitat collezione){
-	List<Area> aree = areaService.tutte();
+	public void delete(Habitat habitat){
+	List<Area> aree = habitat.getAree();
 		if(!(aree.isEmpty())) {
 		for(Area area : aree) {
 					area.setHabitat(null);
 			}
 	}
 	
-		this.habitatRepository.delete(collezione);
+		this.habitatRepository.delete(habitat);
 	}
 }
 

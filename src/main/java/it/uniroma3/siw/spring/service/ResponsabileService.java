@@ -57,7 +57,7 @@ public class ResponsabileService {
 	
 	@Transactional
 	public void delete(Responsabile responsabile){
-		List<Habitat> habitats = habitatService.tutti();
+		List<Habitat> habitats = responsabile.getHabitat();
 		if(!(habitats.isEmpty())) {
 			for(Habitat habitat : habitats) {
 								habitat.setResponsabile(null);
