@@ -73,7 +73,10 @@
 <div class="middle">
 		 <h1>HABITAT <class="Testo" th:text="*{habitat.nome}"></h1>
 		 <div >DIMENSIONE(mq) <class="Testo" th:text="*{habitat.dimensione}"></div>
-		  <P>Responsabile:<class="Testo" th:text="|${habitat?.responsabile?.nome} ${habitat?.responsabile?.cognome}|"></p>
+		  <p>Responsabile:<class="Testo">
+		  <p th:if="${habitat.responsabile} ==null">Responsabile sconosciuto</p>
+		  <p th:unless="${habitat.responsabile} ==null" th:text="|${habitat.responsabile.nome} ${habitat.responsabile.cognome}|">Responsabile sconosciuto</p>
+		  </p>
 		 <p th:text="*{habitat.descrizione}"></p>
 </div>
 <div class="parallax" th:style="'background-image:url(' + ${habitat.photosImagePath} + ');'">
