@@ -61,14 +61,14 @@ public class AreaService {
 	}
 	//
 	@Transactional
-	public void delete(Area collezione){
-	List<Animale> animali = animaleService.tutti();
+	public void delete(Area area){
+	List<Animale> animali = area.getAnimali();
 		if(!(animali.isEmpty())) {
 		for(Animale animale : animali) {
 				animale.setAreaAnimale(null);
 			}
 	}
 	
-		this.areaRepository.delete(collezione);
+		this.areaRepository.delete(area);
 	}
 }

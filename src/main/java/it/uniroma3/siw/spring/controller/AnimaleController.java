@@ -146,7 +146,7 @@ public class AnimaleController {
     }
     
     @RequestMapping(value = "/animale", method = RequestMethod.POST)
-    public String newOpera(@Valid @ModelAttribute("animale") Animale animale, 
+    public String newAnimale(@Valid @ModelAttribute("animale") Animale animale, 
     									Model model, BindingResult bindingResult,
     									@RequestParam(value = "areaSelezionata") Long areaID,
     									@RequestParam(value="img", required=false)  MultipartFile immagine) throws IOException {
@@ -180,6 +180,7 @@ public class AnimaleController {
            }      
             return "animali.html";
         }
+            return "animali.html";
         }
         model.addAttribute("aree",this.areaService.tutte());      
         return "InserisciAnimale.html";
