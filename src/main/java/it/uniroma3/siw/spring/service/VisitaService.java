@@ -56,7 +56,7 @@ public class VisitaService {
 
 	@Transactional
 	public boolean alreadyExists(Visita visita) {
-		List<Visita> visite = this.visitaRepository.findByNomeAndCognome(visita.getNome(),visita.getCognome());
+		List<Visita> visite = this.visitaRepository.findByNomeAndCognomeAndData(visita.getNome(),visita.getCognome(),visita.getData());
 		if (visite.size() > 0)
 			return true;
 		else 

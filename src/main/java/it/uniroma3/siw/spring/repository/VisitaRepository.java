@@ -1,6 +1,7 @@
 package it.uniroma3.siw.spring.repository;
 
 
+import java.time.LocalDate;
 import java.util.List;
 
 import org.springframework.data.jpa.repository.Query;
@@ -20,4 +21,6 @@ public interface VisitaRepository extends CrudRepository<Visita,Long> {
 		 + " FROM  Visita v, Credentials c"
 		 + " WHERE v.credentials.id=?1 AND ?1=c.id")
 	List<Long> findByCredentialsID(Long CredentialID);
+
+	public List<Visita> findByNomeAndCognomeAndData(String nome, String cognome, LocalDate data);
 }
