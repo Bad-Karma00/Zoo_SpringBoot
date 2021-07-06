@@ -18,7 +18,7 @@ public class VisitaValidator implements Validator {
 	@Autowired
 	private VisitaService visitaService;
 	
-    private static final Logger logger = LoggerFactory.getLogger(AnimaleValidator.class);
+    private static final Logger logger = LoggerFactory.getLogger(VisitaValidator.class);
 
 	@Override
 	public void validate(Object o, Errors errors) {

@@ -84,7 +84,7 @@
     	<div class="ImgR">
     	<ul>
 			<li th:each="area : ${aree}">
-			<div class="ImgC"><img th:src="@{${area.photosAnimale}}"></div>
+			<div class="ImgC"><img th:src="@{${area.photosAnimale}}" onerror="this.style.display='none'"></div>
 			<div class="overLay"></div>
 				<a th:href="@{'/area' + '/' + ${area.id}}"  th:text="|${area.nome} ${area?.orario}|"/></a>	
 				 </li>
