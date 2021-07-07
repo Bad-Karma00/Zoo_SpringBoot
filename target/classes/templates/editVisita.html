@@ -1,0 +1,41 @@
+<meta name="robots" content="noindex">
+<html xmlns:th="http://www.thymeleaf.org">
+<head  th:replace="fragments/baseForm.html :: headerfiles(title=#{pageTitle.animaleModifica})"> </head>
+<body>
+  
+  <header th:replace="fragments/baseForm.html :: intestazione"></header>
+  <div class="parallax">
+  <div>	
+  		<div class="Titolo">Inserisci i nuovi dati della visita</div>
+
+	</div>
+	<form th:action="@{/modificaVisita}" th:object="${visita}" method="POST" enctype="multipart/form-data">
+			<div class="form">
+				<span>Visita da modificare:</span>
+				<select  name="visitaSelezionata" id="autoUpdate" class="autoUpdate">
+    			<option value="0">Seleziona la visita</option>
+    			<option th:each="visita : ${visite}"
+    					th:value="${visita.id}" 
+    					th:text="|${visita.nome} ${visita.cognome}|">
+    			</option>
+				</select>
+			</div>
+			<div class="form">
+				<span>Nome nuovo:</span>
+				<span><input type="text" th:field="*{nome}"/></span>
+			</div>
+			<div class="form">
+				<span>Cognome nuovo:</span>
+				<span><input type="text" th:field="*{cognome}"/></span>
+			</div>		
+			<div class="form">
+				<span>Data nuova:</span>
+				<span><input type="date" th:field="*{data}"/></span>
+			</div>
+			<div class="form">
+			<span><button type="submit">Invio</button></span>
+			</div>
+</form>
+<div class="parallax"></div>
+</body>
+</html>
